@@ -1,6 +1,6 @@
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
@@ -18,8 +18,8 @@ import styles from './Register.module.css';
 const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { googleSignIn, gitHubSignIn, emailSignup, isDisable } = useAuth();
-
+  // const { googleSignIn, gitHubSignIn, emailSignup, isDisable } = useAuth();
+const [isDisable, setIsDisable] = useState(false)
   const handleSubmit = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -40,7 +40,8 @@ const Register = () => {
     } else if (!/(?=.*?[#?!@$%^&*-])/.test(password)) {
       toast.error('Password should be at least 1 Spacial character');
     } else {
-      emailSignup(name, email, password, navigate);
+      // emailSignup(name, email, password, navigate);
+      console.log("hello from register")
     }
   };
 
@@ -59,7 +60,7 @@ const Register = () => {
         <Container>
           <h3>Get started for free!</h3>
 
-          <Row className={styles.third__party}>
+          {/* <Row className={styles.third__party}>
             <Col lg={4} className='g-4'>
               <div className={styles.method1} onClick={() => googleSignIn(navigate, location)}>
                 <img src={googleIcon} alt='googleIcon' />
@@ -78,7 +79,7 @@ const Register = () => {
                 <h5>GitHub</h5>
               </div>
             </Col>
-          </Row>
+          </Row> */}
 
           <p className={styles.another}>OR</p>
           <form onSubmit={handleSubmit} autoComplete='off'>

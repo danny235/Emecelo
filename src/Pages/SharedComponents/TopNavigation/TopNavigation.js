@@ -45,7 +45,8 @@ import styles from './TopNavigation.module.css';
 const TopNavigation = () => {
   const [menuShow, setMenuShow] = useState(false);
   const navigate = useNavigate();
-  const { loggedInUser } = useAuth();
+  // const { loggedInUser } = useAuth();
+  const [loggedInUser] = useState("")
   const { show, handleClose, handleShow } = useRedux();
   const cart = useSelector((state) => state.products.cart);
 
@@ -179,7 +180,7 @@ const TopNavigation = () => {
           <Row>
             <Col lg={2} md={2} className='d-flex align-self-center'>
               <NavLink to='/' className={styles.logo}>
-                <img src={headerLogo} alt='headerLogo' />
+                <h2 style={{color: "#ffffff"}}>Emecelo</h2>
               </NavLink>
             </Col>
             <Col lg={7} md={7} sm={12} xs={12}>

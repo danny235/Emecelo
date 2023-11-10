@@ -14,7 +14,7 @@ const Footer = () => {
         <Container>
           <Row>
             <Col lg={6} md={12} className={styles.logo}>
-              <img src={footerLogo} alt='footerLogo' />
+            <h2 style={{color: "#10B981"}}>Emecelo</h2>
               <p>
                 There are many popular products you will find our shop, Choose your daily necessary product from our KachaBazar shop and get some special offer.
               </p>

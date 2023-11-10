@@ -22,7 +22,7 @@ const useFirebase = () => {
   const [isDisable, setIsDisable] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
-  initializeAuthentication();
+  // initializeAuthentication();
   const googleProvider = new GoogleAuthProvider();
   const gitHubProvider = new GithubAuthProvider();
   const auth = getAuth();
