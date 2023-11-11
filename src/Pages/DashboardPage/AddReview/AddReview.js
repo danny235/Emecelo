@@ -7,41 +7,43 @@ import emailIcon from '../../../assets/images/login/email.svg';
 import userIcon from '../../../assets/images/login/user.svg';
 import useAuth from '../../../hooks/useAuth';
 import styles from './AddReview.module.css';
+import { useSelector } from 'react-redux';
 
 const AddReview = () => {
-  const { loggedInUser } = useAuth();
-  console.log(loggedInUser);
-  const handleSubmit = (e) => {
-    const loading = toast.loading('Loading...Please Wait!!!');
-    e.preventDefault();
-    const reviewData = {};
-    reviewData.image = loggedInUser.photoURL;
-    reviewData.email = e.target.email.value;
-    reviewData.star = e.target.star.value;
-    reviewData.reviewText = e.target.reviewText.value;
+  // const { loggedInUser } = useAuth();
+  // console.log(loggedInUser);
+  const {userProfile} = useSelector(state=>state.user)
+  // const handleSubmit = (e) => {
+  //   const loading = toast.loading('Loading...Please Wait!!!');
+  //   e.preventDefault();
+  //   const reviewData = {};
+  //   reviewData.image = loggedInUser.photoURL;
+  //   reviewData.email = e.target.email.value;
+  //   reviewData.star = e.target.star.value;
+  //   reviewData.reviewText = e.target.reviewText.value;
 
-    axios
-      .post('https://kacha-bazar.up.railway.app/add-reviews', reviewData)
-      .then((res) => {
-        if (res.data.insertedId) {
-          swal({
-            title: 'Good job!',
-            text: 'Your Review is successful!',
-            icon: 'success',
-            button: 'OK!',
-          });
-          e.target.reset();
-        }
-      })
-      .catch((err) => toast.error(err.message))
-      .finally(() => toast.dismiss(loading));
-  };
+  //   axios
+  //     .post('https://kacha-bazar.up.railway.app/add-reviews', reviewData)
+  //     .then((res) => {
+  //       if (res.data.insertedId) {
+  //         swal({
+  //           title: 'Good job!',
+  //           text: 'Your Review is successful!',
+  //           icon: 'success',
+  //           button: 'OK!',
+  //         });
+  //         e.target.reset();
+  //       }
+  //     })
+  //     .catch((err) => toast.error(err.message))
+  //     .finally(() => toast.dismiss(loading));
+  // };
 
   return (
     <section id={styles.add__review}>
       <Container>
         <h1>Review</h1>
-        <form onSubmit={handleSubmit}>
+        <form >
           <Row className='g-4'>
             <Col lg={10}>
               <div className={styles.inputs}>
@@ -49,7 +51,7 @@ const AddReview = () => {
                   type='email'
                   id='reviewEmail'
                   name='email'
-                  value={loggedInUser.email}
+                  value={userProfile?.email}
                   readOnly
                 />
                 <label htmlFor='reviewEmail'>

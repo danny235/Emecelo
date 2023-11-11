@@ -1,27 +1,40 @@
-import { faClipboardList, faHome, faPlus, faQuoteLeft, faSignOutAlt, faTasks, faUserEdit, faUserPlus, faUserTie } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
-import { NavLink, Outlet } from 'react-router-dom';
-import useAuth from '../../../hooks/useAuth';
-import { emptyCart } from '../../../redux/feathers/productsSlice';
-import DailyNeeds from '../../SharedComponents/DailyNeeds/DailyNeeds';
-import Footer from '../../SharedComponents/Footer/Footer';
-import TopNavigation from '../../SharedComponents/TopNavigation/TopNavigation';
-import styles from './Dashboard.module.css';
+import {
+  faClipboardList,
+  faHome,
+  faPlus,
+  faQuoteLeft,
+  faSignOutAlt,
+  faTasks,
+  faUserEdit,
+  faUserPlus,
+  faUserTie,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { emptyCart } from "../../../redux/feathers/productsSlice";
+import { logoutUser } from "../../../redux/user/userSlice";
+import DailyNeeds from "../../SharedComponents/DailyNeeds/DailyNeeds";
+import Footer from "../../SharedComponents/Footer/Footer";
+import TopNavigation from "../../SharedComponents/TopNavigation/TopNavigation";
+import styles from "./Dashboard.module.css";
 
 const Dashboard = () => {
-  const { logOut, isAdmin } = useAuth();
+  // const { logOut, isAdmin } = useAuth();
+  const isAdmin = false;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const signOut = () => {
-    logOut();
+    dispatch(logoutUser());
     dispatch(emptyCart());
+    navigate("/");
   };
 
   useEffect(() => {
-    document.title = 'Dashboard | Kacha Bazar';
+    document.title = "Dashboard | Kacha Bazar";
     window.scrollTo({
       top: 0,
     });
@@ -35,7 +48,12 @@ const Dashboard = () => {
           <Row>
             <Col lg={3}>
               <aside>
-                <NavLink to='/dashboard/profile' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                <NavLink
+                  to="/dashboard/profile"
+                  className={(navInfo) =>
+                    navInfo.isActive ? styles.active : ""
+                  }
+                >
                   <span>
                     <FontAwesomeIcon icon={faUserTie} />
                   </span>
@@ -43,13 +61,23 @@ const Dashboard = () => {
                 </NavLink>
                 {!isAdmin ? (
                   <>
-                    <NavLink to='/dashboard/my-orders' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    <NavLink
+                      to="/dashboard/my-orders"
+                      className={(navInfo) =>
+                        navInfo.isActive ? styles.active : ""
+                      }
+                    >
                       <span>
                         <FontAwesomeIcon icon={faTasks} />
                       </span>
                       My Orders
                     </NavLink>
-                    <NavLink to='/dashboard/review' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    <NavLink
+                      to="/dashboard/review"
+                      className={(navInfo) =>
+                        navInfo.isActive ? styles.active : ""
+                      }
+                    >
                       <span>
                         <FontAwesomeIcon icon={faQuoteLeft} />
                       </span>
@@ -58,25 +86,45 @@ const Dashboard = () => {
                   </>
                 ) : (
                   <>
-                    <NavLink to='/dashboard/add-product' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    <NavLink
+                      to="/dashboard/add-product"
+                      className={(navInfo) =>
+                        navInfo.isActive ? styles.active : ""
+                      }
+                    >
                       <span>
                         <FontAwesomeIcon icon={faPlus} />
                       </span>
                       Add Product
                     </NavLink>
-                    <NavLink to='/dashboard/manage-orders' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    <NavLink
+                      to="/dashboard/manage-orders"
+                      className={(navInfo) =>
+                        navInfo.isActive ? styles.active : ""
+                      }
+                    >
                       <span>
                         <FontAwesomeIcon icon={faClipboardList} />
                       </span>
                       Manage Orders
                     </NavLink>
-                    <NavLink to='/dashboard/make-admin' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    <NavLink
+                      to="/dashboard/make-admin"
+                      className={(navInfo) =>
+                        navInfo.isActive ? styles.active : ""
+                      }
+                    >
                       <span>
                         <FontAwesomeIcon icon={faUserPlus} />
                       </span>
                       Add Admin
                     </NavLink>
-                    <NavLink to='/dashboard/edit-profile' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                    <NavLink
+                      to="/dashboard/edit-profile"
+                      className={(navInfo) =>
+                        navInfo.isActive ? styles.active : ""
+                      }
+                    >
                       <span>
                         <FontAwesomeIcon icon={faUserEdit} />
                       </span>
@@ -85,13 +133,18 @@ const Dashboard = () => {
                   </>
                 )}
 
-                <NavLink to='/' onClick={signOut}>
+                <NavLink to="/" onClick={signOut}>
                   <span>
                     <FontAwesomeIcon icon={faSignOutAlt} />
                   </span>
                   Log Out
                 </NavLink>
-                <NavLink to='/' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                <NavLink
+                  to="/"
+                  className={(navInfo) =>
+                    navInfo.isActive ? styles.active : ""
+                  }
+                >
                   <span>
                     <FontAwesomeIcon icon={faHome} />
                   </span>

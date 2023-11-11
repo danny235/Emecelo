@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { Toaster } from "react-hot-toast";
+import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import SingleCategory from "./Pages/CategoriesPage/SingleCategory/SingleCategory";
@@ -32,10 +33,13 @@ const TermsAndCondition = lazy(() =>
 );
 
 function App() {
+  const { token } = useSelector((state) => state.user);
+  
   return (
     <>
       <ScrollToTop />
-      <Toaster />
+      <Toaster position="top-center"
+  reverseOrder={false} />
       <Suspense fallback={<PreLoader />}>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -44,9 +48,13 @@ function App() {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsAndCondition />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
+          {!token && (
+            <>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/reset-password" element={<ResetPassword />} />
+            </>
+          )}
           <Route path="/categories" element={<Categories />}>
             <Route
               path="/categories/:searchString"

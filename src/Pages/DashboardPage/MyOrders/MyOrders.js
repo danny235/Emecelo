@@ -10,12 +10,11 @@ import LoadingSpinner from '../../SharedComponents/LoadingSpinner/LoadingSpinner
 import styles from './MyOrders.module.css';
 
 const MyOrders = () => {
-  const { loggedInUser } = useAuth();
+  // const { loggedInUser } = useAuth();
+
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(loadOrdersAsync(loggedInUser.email));
-  }, [dispatch, loggedInUser.email]);
+  const {userProfile} = useSelector(state=>state.user)
 
   const orders = useSelector((state) => state.orders);
 
