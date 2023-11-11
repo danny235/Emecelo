@@ -42,12 +42,18 @@ const Login = () => {
         console.log(data.access_token, "from login");
         dispatch(updateUserProfile(data?.user))
         dispatch(updateToken(data?.access_token))
+        toast.success("Logged in successfully 🎉")
         navigate("/")
       }
     } catch (err) {
       setIsDisable(false);
-      toast.error(err.message);
-      console.log(err.message)
+      if(err?.response?.data?.detail) {
+        toast.error(err?.response?.data?.detail)
+      } else {
+
+        toast.error(err.message);
+      }
+      console.log(err.message, err?.response?.data?.detail)
     }
   };
 

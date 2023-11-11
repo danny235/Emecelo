@@ -38,7 +38,7 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      <Toaster position="top-center"
+      <Toaster  position="top-center"
   reverseOrder={false} />
       <Suspense fallback={<PreLoader />}>
         <Routes>

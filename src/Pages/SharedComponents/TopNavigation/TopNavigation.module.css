@@ -355,7 +355,7 @@
 
   #header__top {
     position: fixed;
-    z-index: 9999999;
+    z-index: 1;
     left: 0;
     top: 0;
     right: 0;

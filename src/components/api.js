@@ -1,10 +1,10 @@
 import axios from "axios";
-const BASE_URL = "https://street-bazr.onrender.com";
+const BASE_URL = "https://emecelo.onrender.com/api/";
 
 export const LOGIN_USER = async (email, password) => {
 
   try {
-    const response = await axios.post(`${BASE_URL}/api/auth/login/`, {
+    const response = await axios.post(`${BASE_URL}login/`, {
        email,
        password,
     });
@@ -27,7 +27,7 @@ export const LOGIN_GOOGLE_USER = async (code) => {
 
 export const REGISTER_USER = async (email, password) => {
   try {
-    const response = await axios.post(`${BASE_URL}/api/auth/register/`, {
+    const response = await axios.post(`${BASE_URL}/register/`, {
       email,
       password,
     });
