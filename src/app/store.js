@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
@@ -10,10 +10,14 @@ const persistConfig = {
   key: "emecelo",
   storage,
 };
-const persistedReducer = persistReducer(persistConfig, userReducer);
+
+const rootReducers = combineReducers({
+  products: productsReducer, orders: ordersReducer, user: userReducer 
+})
+const persistedReducer = persistReducer(persistConfig, rootReducers);
 
 const store = configureStore({
-  reducer: { products: productsReducer, orders: ordersReducer, user: persistedReducer },
+  reducer: persistedReducer,
   middleware: [thunk],
 });
 

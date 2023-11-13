@@ -24,7 +24,7 @@ export const postProductAsync = createAsyncThunk(
 export const loadProductsAsync = createAsyncThunk(
   'products/loadProductsAsync',
   async () => {
-    const response = await axios.get('https://kacha-bazar.up.railway.app/all-products');
+    const response = await axios.get('https://emecelo.onrender.com/api/products/');
     return response.data;
   }
 );
@@ -53,12 +53,12 @@ export const productsSlice = createSlice({
       state.queryProductsState = [];
     },
     handleCancelOrder: (state, { payload }) => {
-      state.cart = state.cart.filter((pd) => pd.item._id !== payload);
+      state.cart = state.cart.filter((pd) => pd.item.id !== payload);
     },
     handleIncrease: (state, { payload }) => {
       state.cart = state.cart.map((item) => {
         let items = item;
-        if (item.item._id === payload) {
+        if (item.item.id === payload) {
           item.quantity = item.quantity + 1;
           item.totalPrice = Number(item.quantity) * Number(item.item.price);
           items = { ...item };
@@ -69,7 +69,7 @@ export const productsSlice = createSlice({
     handleDecrease: (state, { payload }) => {
       state.cart = state.cart.map((item) => {
         let items = item;
-        if (item.item._id === payload && item.quantity > 1) {
+        if (item.item.id === payload && item.quantity > 1) {
           item.quantity = item.quantity - 1;
           item.totalPrice = Number(item.quantity) * Number(item.item.price);
           items = { ...item };

@@ -25,7 +25,7 @@ const Profile = () => {
           <Container>
             <h1>My Profile</h1>
             <div className={styles.profile}>
-              <img src={userProfile?.profile_image ? userProfile?.profile_image : "https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"} alt={userProfile?.first_name} />
+              <img src={userProfile?.profile_image_url ? userProfile?.profile_image_url : "https://static.vecteezy.com/system/resources/previews/008/442/086/non_2x/illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg"} alt={userProfile?.first_name} />
               <h4>{userProfile?.first_name}</h4>
               <p>{userProfile?.email}</p>
               <button onClick={signOut}>Logout</button>

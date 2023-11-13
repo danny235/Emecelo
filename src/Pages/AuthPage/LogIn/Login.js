@@ -39,7 +39,7 @@ const Login = () => {
 
       if (data) {
         setIsDisable(false);
-        console.log(data, "from login");
+        // console.log(data, "from login");
         dispatch(updateUserProfile(data?.user))
         dispatch(updateToken(data?.access_token))
         toast.success("Logged in successfully 🎉")

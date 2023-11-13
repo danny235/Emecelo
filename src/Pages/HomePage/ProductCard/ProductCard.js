@@ -6,15 +6,15 @@ import styles from './ProductCard.module.css';
 const ProductCard = ({ product }) => {
   const [isDisable, setIsDisable] = useState(false);
   const dispatch = useDispatch();
-  const { image, name, price, _id } = product;
+  const { image_url, title, price, id } = product;
   const cart = useSelector((state) => state.products.cart);
 
   useEffect(() => {
-    const pd = cart.find((pd) => pd.item._id === _id);
+    const pd = cart.find((pd) => pd.item.id === id);
     if (pd) {
       setIsDisable(true);
     }
-  }, [_id, cart]);
+  }, [id, cart]);
 
   const handleClick = (item) => {
     const pd = {};
@@ -27,10 +27,10 @@ const ProductCard = ({ product }) => {
   return (
     <div className={styles.card}>
       <span className={styles.card__img}>
-        <img src={image} alt={name} />
+        <img src={image_url} alt={title} />
       </span>
       <div className={styles.card__content}>
-        <h6>{name}</h6>
+        <h6>{title}</h6>
         <span className='d-flex justify-content-between align-self-center mt-3'>
           <h4> ${price}</h4>
           <button onClick={() => handleClick(product)} disabled={isDisable}>

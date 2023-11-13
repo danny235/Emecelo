@@ -47,7 +47,7 @@ const Register = () => {
 
       if (data) {
         setIsDisable(false);
-        console.log(data, "from register");
+        // console.log(data, "from register");
         dispatch(updateUserProfile(data?.user))
         dispatch(updateToken(data?.access))
         toast.success("Created your account successfully 🎉")

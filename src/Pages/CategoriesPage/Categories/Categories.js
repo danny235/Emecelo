@@ -30,9 +30,9 @@ import styles from './Categories.module.css';
 const Categories = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(loadProductsAsync());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(loadProductsAsync());
+  // }, [dispatch]);
 
   const state = useSelector((state) => state.products);
 

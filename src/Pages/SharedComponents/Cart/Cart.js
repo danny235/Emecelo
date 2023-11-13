@@ -11,23 +11,23 @@ const Cart = ({ pd: { item, quantity, totalPrice } }) => {
   return (
     <div className={styles.cart__item}>
       <div className='d-flex align-self-center'>
-        <img src={item.image} alt={item.name} />
+        <img src={item.image_url} alt={item.title} />
         <span className='ms-3'>
-          <h6>{item.name}</h6>
+          <h6>{item.title}</h6>
           <small>${item.price}</small>
           <h5>{totalPrice ? totalPrice : item.price}</h5>
         </span>
       </div>
       <div className={styles.counter}>
-        <span onClick={() => dispatch(handleDecrease(item._id))}>
+        <span onClick={() => dispatch(handleDecrease(item.id))}>
           <FontAwesomeIcon icon={faMinus} />
         </span>
         <span>{quantity}</span>
-        <span onClick={() => dispatch(handleIncrease(item._id))}>
+        <span onClick={() => dispatch(handleIncrease(item.id))}>
           <FontAwesomeIcon icon={faPlus} />
         </span>
       </div>
-      <div className={styles.delete__icon} onClick={() => dispatch(handleCancelOrder(item._id))}>
+      <div className={styles.delete__icon} onClick={() => dispatch(handleCancelOrder(item.id))}>
         <FontAwesomeIcon icon={faTrashAlt} />
       </div>
     </div>

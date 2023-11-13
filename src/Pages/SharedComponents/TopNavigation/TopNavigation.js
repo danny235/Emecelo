@@ -603,7 +603,7 @@ const TopNavigation = () => {
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title>
                   <NavLink to="/" onClick={handleMenuClose}>
-                    <img src={footerLogo} alt="footerLogo" />
+                  <h2 style={{color: "#10B981"}}>Emecelo</h2>
                   </NavLink>
                 </Offcanvas.Title>
               </Offcanvas.Header>
