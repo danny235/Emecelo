@@ -39,7 +39,7 @@ const Login = () => {
 
       if (data) {
         setIsDisable(false);
-        console.log(data.access_token, "from login");
+        // console.log(data.access_token, "from login");
         dispatch(updateUserProfile(data?.user))
         dispatch(updateToken(data?.access_token))
         toast.success("Logged in successfully 🎉")
@@ -48,14 +48,16 @@ const Login = () => {
     } catch (err) {
       setIsDisable(false);
       if(err?.response?.data?.detail) {
-        toast.error(err?.response?.data?.detail)
+        toast.error(err?.response?.data?.detail);
       } else {
 
         toast.error(err.message);
       }
-      console.log(err.message, err?.response?.data?.detail)
+      // console.log(err.message, err?.response?.data?.detail)
     }
   };
+
+
 
   useEffect(() => {
     document.title = "Login | Kacha Bazar";

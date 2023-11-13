@@ -128,24 +128,24 @@
   outline: 0;
 }
 
-#register form .options {
+#register .options {
   display: flex;
   margin: 10px 0 20px 0;
   justify-content: flex-end;
   align-items: center;
 }
 
-#register form .options a {
+#register .options a {
   font-size: 14px;
   color: #4b5563;
   transition: all linear 0.3s;
 }
 
-#register form .options a:hover {
+#register .options a:hover {
   color: #10b981;
 }
 
-#register form button {
+#register button {
   background-color: #10b981;
   border: 2px solid transparent;
   color: #fff;

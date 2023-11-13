@@ -1,52 +1,72 @@
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import toast from 'react-hot-toast';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import emailIcon from '../../../assets/images/login/email.svg';
-import facebookIcon from '../../../assets/images/login/facebook.svg';
-import gitHubIcon from '../../../assets/images/login/gitHub.svg';
-import googleIcon from '../../../assets/images/login/google.svg';
-import passwordIcon from '../../../assets/images/login/password.svg';
-import userIcon from '../../../assets/images/login/user.svg';
-import useAuth from '../../../hooks/useAuth';
-import Footer from '../../SharedComponents/Footer/Footer';
-import TopNavigation from '../../SharedComponents/TopNavigation/TopNavigation';
-import styles from './Register.module.css';
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Formik } from "formik";
+import React, { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
+import toast from "react-hot-toast";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import * as yup from "yup";
+import emailIcon from "../../../assets/images/login/email.svg";
+import passwordIcon from "../../../assets/images/login/password.svg";
+import userIcon from "../../../assets/images/login/user.svg";
+import CustomInput from "../../../components/CustomInput";
+import Footer from "../../SharedComponents/Footer/Footer";
+import TopNavigation from "../../SharedComponents/TopNavigation/TopNavigation";
+import styles from "./Register.module.css";
+import { REGISTER_USER } from "../../../components/api";
+import { useDispatch } from "react-redux";
+import { updateToken, updateUserProfile } from "../../../redux/user/userSlice";
+
+const registerSchema = yup.object().shape({
+  firstName: yup
+    .string()
+    .required("Please enter your First Name")
+    .label("First Name"),
+  lastName: yup
+    .string()
+    .required("Please enter your Last Name")
+    .label("Last Name"),
+  email: yup.string().required().label("Email").email(),
+  password: yup
+    .string()
+    .required()
+    .label("Password")
+    .min(8, "Seems a bit short"),
+});
 
 const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
   // const { googleSignIn, gitHubSignIn, emailSignup, isDisable } = useAuth();
-const [isDisable, setIsDisable] = useState(false)
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    const confirmPassword = e.target.confirmPassword.value;
+  const [isDisable, setIsDisable] = useState(false);
+  const dispatch = useDispatch()
+  const handleSubmit = async (firstName, lastName, email, password) => {
+    setIsDisable(true);
+    try {
+      const data = await REGISTER_USER(firstName, lastName, email, password);
 
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      toast.error('Please Enter a valid Email Address..');
-    } else if (password !== confirmPassword) {
-      toast.error('Password not matched...');
-    } else if (password.length < 8) {
-      toast.error('Your Password must have 8 characters...');
-    } else if (!/(?=.*?[A-Z])/.test(password)) {
-      toast.error('Password should be at least 1 Uppercase');
-    } else if (!/(?=.*?[0-9])/.test(password)) {
-      toast.error('Password should be at least 1 Number');
-    } else if (!/(?=.*?[#?!@$%^&*-])/.test(password)) {
-      toast.error('Password should be at least 1 Spacial character');
-    } else {
-      // emailSignup(name, email, password, navigate);
-      console.log("hello from register")
+      if (data) {
+        setIsDisable(false);
+        // console.log(data.access_token, "from login");
+        dispatch(updateUserProfile(data?.user))
+        dispatch(updateToken(data?.access_token))
+        toast.success("Created your account successfully 🎉")
+        navigate("/")
+      }
+    } catch (err) {
+      setIsDisable(false);
+      if(err?.response?.data?.detail) {
+        toast.error(err?.response?.data?.detail);
+      } else {
+
+        toast.error(err.message);
+      }
+      // console.log(err.message, err?.response?.data?.detail)
     }
   };
 
   useEffect(() => {
-    document.title = 'Register | Kacha Bazar';
+    document.title = "Register | Kacha Bazar";
     window.scrollTo({
       top: 0,
     });
@@ -82,62 +102,110 @@ const [isDisable, setIsDisable] = useState(false)
           </Row> */}
 
           <p className={styles.another}>OR</p>
-          <form onSubmit={handleSubmit} autoComplete='off'>
-            <span className={styles.inputs}>
-              <input type='text' name='name' id='name1' autoComplete='off' spellCheck='false' placeholder='Enter Your Full Name' required />
-              <label htmlFor='name1'>
-                <img src={userIcon} alt='userIcon' />
-              </label>
-            </span>
-            <span className={styles.inputs}>
-              <input
-                type='email'
-                name='email'
-                id='email2'
-                autoComplete='new-password'
-                spellCheck='false'
-                placeholder='Enter Your Email Address'
-                required
-              />
-              <label htmlFor='email2'>
-                <img src={emailIcon} alt='emailIcon' />
-              </label>
-            </span>
-            <span className={styles.inputs}>
-              <input
-                type='password'
-                name='password'
-                id='password1'
-                autoComplete='off'
-                spellCheck='false'
-                placeholder='Enter Your Password'
-                required
-              />
-              <label htmlFor='password1'>
-                <img src={passwordIcon} alt='passwordIcon' />
-              </label>
-            </span>
-            <span className={styles.inputs}>
-              <input
-                type='password'
-                name='confirmPassword'
-                id='password2'
-                autoComplete='off'
-                spellCheck='false'
-                placeholder='Confirm Your Password'
-                required
-              />
-              <label htmlFor='password2'>
-                <img src={passwordIcon} alt='passwordIcon' />
-              </label>
-            </span>
-            <span className={styles.options}>
-              <NavLink to='/login'>Already Have Account?</NavLink>
-            </span>
-            <button type='submit'>
-              {isDisable ? 'Registering....' : 'Get Started Now'} <FontAwesomeIcon icon={faArrowRight} />
-            </button>
-          </form>
+          <Formik
+            initialValues={{
+              firstName: "",
+              lastName: "",
+              email: "",
+              password: "",
+            }}
+            onSubmit={(values, actions) => {
+              // console.log(values.email, values.password);
+              handleSubmit(
+                values.firstName,
+                values.lastName,
+                values.email,
+                values.password
+              );
+            }}
+            validationSchema={registerSchema}
+          >
+            {(formikProps) => (
+              <>
+                <span className={styles.inputs}>
+                  <CustomInput
+                    formikKey="firstName"
+                    formikProps={formikProps}
+                    value={formikProps.values.firstName}
+                    type="text"
+                    name="name"
+                    id="firstName"
+                    autoComplete="off"
+                    spellCheck="false"
+                    placeholder="Enter Your First Name"
+                    required
+                  />
+                  <label htmlFor="firstName">
+                    <img src={userIcon} alt="userIcon" />
+                  </label>
+                </span>
+                <span className={styles.inputs}>
+                  <CustomInput
+                    formikKey="lastName"
+                    formikProps={formikProps}
+                    value={formikProps.values.lastName}
+                    type="text"
+                    name="name"
+                    id="lastName"
+                    autoComplete="off"
+                    spellCheck="false"
+                    placeholder="Enter Your Last Name"
+                    required
+                  />
+                  <label htmlFor="lastName">
+                    <img src={userIcon} alt="userIcon" />
+                  </label>
+                </span>
+                <span className={styles.inputs}>
+                  <CustomInput
+                    formikKey="email"
+                    formikProps={formikProps}
+                    value={formikProps.values.email}
+                    type="email"
+                    name="email"
+                    id="email"
+                    autoComplete="off"
+                    spellCheck="false"
+                    placeholder="Enter Your Email Address"
+                    required
+                  />
+                  <label htmlFor="email2">
+                    <img src={emailIcon} alt="emailIcon" />
+                  </label>
+                </span>
+                <span className={styles.inputs}>
+                  <CustomInput
+                    formikProps={formikProps}
+                    formikKey="password"
+                    value={formikProps.values.password}
+                    type="password"
+                    name="password"
+                    id="password"
+                    autoComplete="off"
+                    spellCheck="false"
+                    placeholder="Enter Your Secret Password"
+                    required
+                  />
+                  <label htmlFor="password1">
+                    <img src={passwordIcon} alt="passwordIcon" />
+                  </label>
+                </span>
+
+                <span className={styles.options}>
+                  <NavLink to="/login">Already Have Account?</NavLink>
+                </span>
+                <button
+                  onClick={formikProps.handleSubmit}
+                  style={styles.button}
+                  disabled={isDisable}
+                  type="submit"
+                >
+                  {isDisable ? "Registering...." : "Get Started Now"}{" "}
+                  <FontAwesomeIcon icon={faArrowRight} />
+                </button>
+              </>
+            )}
+          </Formik>
         </Container>
       </section>
       <Footer />
