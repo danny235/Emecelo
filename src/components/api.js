@@ -25,12 +25,12 @@ export const LOGIN_GOOGLE_USER = async (code) => {
 
 export const REGISTER_USER = async (firstName, lastName, email, password) => {
   try {
-    console.log({
-        first_name: firstName,
-        last_name: lastName,
-        email: email,
-        password: password,
-      })
+    // console.log({
+    //     first_name: firstName,
+    //     last_name: lastName,
+    //     email: email,
+    //     password: password,
+    //   })
     const response = await axios.post(`${BASE_URL}register/`, {
       first_name: firstName,
       last_name: lastName,

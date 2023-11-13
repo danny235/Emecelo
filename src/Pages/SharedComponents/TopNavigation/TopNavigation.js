@@ -214,7 +214,7 @@ const TopNavigation = () => {
                     <span>{total}</span>
                   </li>
                   <li>
-                    {!token ? (
+                    {token === "" ? (
                       <img
                         src={userIcon}
                         alt="userIcon"
