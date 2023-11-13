@@ -25,11 +25,11 @@ const Products = () => {
         <p>See all our popular products in this week. You can choose your daily needs products from this list and get some special offer with free shipping.</p>
         <div className={styles.products__container}>
           {state.productsState.slice(0, 20)?.map((product) => (
-            <ProductCard key={product._id} product={product} />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
         {state.status === 'Pending' && <LoadingSpinner />}
-        {state.error && toast.error(state.error)}
+        
         <span className={styles.category__button}>
           <button onClick={() => navigate('categories/Fresh%20Vegetable')}>All Categories</button>
         </span>

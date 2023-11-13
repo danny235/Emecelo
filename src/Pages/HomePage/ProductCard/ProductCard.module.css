@@ -14,6 +14,31 @@
   justify-content: center;
   align-items: center;
   transition: all linear 0.3s;
+  position: relative;
+}
+
+.quantity {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 2%;
+  left: 13%;
+  width: 80px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: #F3F4F6;
+  font-size: 12px;
+  padding: 10px;
+  gap: 5px;
+}
+
+.quantity :nth-child(1) {
+  color: #10b981 !important;
+}
+
+.quantity :nth-child(2) {
+  color: tomato !important;
 }
 
 .card:hover .card__img {
@@ -25,7 +50,7 @@
 }
 
 .card img {
-  height: 150px;
+  height: 180px;
   object-fit: contain;
   width: 100%;
 }
