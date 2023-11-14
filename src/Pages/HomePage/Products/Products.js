@@ -17,6 +17,7 @@ const Products = () => {
   }, [dispatch]);
 
   const state = useSelector((state) => state.products);
+  console.log("products", state)
 
   return (
     <section id={styles.products}>

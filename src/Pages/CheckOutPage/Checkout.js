@@ -2,7 +2,7 @@ import { faFedex, faUps } from '@fortawesome/free-brands-svg-icons';
 import { faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row, Modal, Button } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
@@ -14,21 +14,15 @@ import Footer from '../SharedComponents/Footer/Footer';
 import TopNavigation from '../SharedComponents/TopNavigation/TopNavigation';
 import styles from './CheckoutPage.module.css';
 
-
-
 const CheckOutPage = () => {
   const [data, setData] = useState({});
   const [isDisable, setIsDisable] = useState(false);
-  const [modalShow, setModalShow] = React.useState(true);
-  const [show, setShow] = useState(false);
-  const [order, setOrder] = useState([])
 
   const navigate = useNavigate();
   const loggedInUser = useSelector((state) => state.user.userProfile);
   const token = useSelector((state) => state.user.token);
 
 
-  
   const cart = useSelector((state) => state.products.cart);
   const dispatch = useDispatch();
   console.log("cart", cart)
@@ -72,11 +66,8 @@ const CheckOutPage = () => {
 
 
     dispatch(postOrdersAsync(data)).then((res) => {
-
-      console.log("place order", res?.payload)
-      setOrder(res?.payload);
-      handleShow();
-      
+      console.log("place order")
+      navigate('/dashboard')
       // if (res.payload.insertedId) {
       //   swal({
       //     title: `Well Done ${loggedInUser.displayName}!!`,
@@ -92,72 +83,11 @@ const CheckOutPage = () => {
     });
   };
 
-  const handleShow = () => {
-    setShow(true);
-  };
-  const handleClose = () => {
-    setShow(false);
-    setTimeout(() => window.location.reload(), 200);
-    navigate("/dashboard/my-orders");
-  };
-
-  console.log("here data", order)
+  console.log("here data")
   return (
     <>
       <TopNavigation />
       <section id={styles.checkout}>
-      <Modal
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header style={{ justifyContent: "center" }}>
-          <Modal.Title
-            id="contained-modal-title-vcenter"
-            style={{ fontWeight: 600 }}
-          >
-            Order Placed Successfully
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body
-          style={{ textAlign: "center", alignSelf: "center" }}
-          className="mb-5"
-        >
-          {/* <FontAwesomeIcon
-            icon={faCheckCircle}
-            size="6x"
-            color={Colors.BES_PURPLE}
-            className="mb-5"
-          /> */}
-          <p style={{ fontWeight: 600 }}>Order ID: {order?.order_id}</p>
-       
-            Your order has been received, it will be ready for payment within 2
-            working hours. Kindly check pending orders in your profile if you
-            did not get a mail notification.
-      
-          <p>Thank you.</p>
-        </Modal.Body>
-        <Modal.Footer style={{ justifyContent: "center" }}>
-          <Button
-            onClick={handleClose}
-            style={{
-              borderRadius: 10,
-              backgroundColor: "green",
-              color: "#FFFFFF",
-              fontSize: 16,
-              width: 150,
-              marginTop: 20,
-              height: 50,
-              border: "none",
-            }}
-          >
-            Done
-          </Button>
-        </Modal.Footer>
-      </Modal>
         <Container>
           <Row>
             <Col lg={6} className='mt-4 mt-md-0'>
@@ -198,12 +128,46 @@ const CheckOutPage = () => {
                       <input type='number' name='zip' id='zip' placeholder='12345' autoComplete='off' required />
                     </Col>
                   </Row>
-                 
-             
-                    <button className='btn btn-block w-100' type='submit' disabled={isDisable}>
+                  <h4 className='my-5'>03. Shipping method</h4>
+
+                  <Row>
+                    <Col lg={6} className={styles.shipping__methods}>
+                      <label htmlFor='fexEx'>
+                        <span>
+                          <FontAwesomeIcon icon={faFedex} />
+                          <small className='ms-3 mt-2' style={{ position: 'absolute' }}>
+                            Delivery 1 Day Cost $15
+                          </small>
+                        </span>
+                      </label>
+                      <input type='radio' name='shipping' id='fexEx' required value='15' onChange={handelChange} />
+                    </Col>
+                    <Col lg={6} className={styles.shipping__methods}>
+                      <label htmlFor='ups'>
+                        <FontAwesomeIcon icon={faUps} />
+                        <small className='ms-3 mt-1' style={{ position: 'absolute' }}>
+                          Delivery 7 Days Cost $7
+                        </small>
+                      </label>
+                      <input type='radio' name='shipping' id='ups' required value='7' onChange={handelChange} />
+                    </Col>
+                  </Row>
+                  {/* <h4 className='my-5'>04. Payment Details</h4>
+
+                  <Row>
+                    <Col lg={6} className={styles.payment__methods}>
+                      <label htmlFor='money'>
+                        <FontAwesomeIcon icon={faMoneyBillWave} />
+                        <span className='ms-3'>Cash On Delivery</span>
+                      </label>
+                      <input type='radio' name='payment' id={styles.money} required onChange={handelChange} value='COD' />
+                    </Col>
+                  </Row> */}
+                  <span className='d-flex justify-content-center'>
+                    <button type='submit' disabled={isDisable}>
                      Place your Order
                     </button>
-            
+                  </span>
                 </form>
               </Container>
             </Col>

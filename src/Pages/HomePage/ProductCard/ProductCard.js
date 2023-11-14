@@ -28,8 +28,8 @@ const ProductCard = ({ product }) => {
     <div className={styles.card}>
       <span className={styles.card__img}>
         <span className={styles.quantity}>
-          <p>Stock:</p>
-          <p>{quantity}</p>
+        <small>Stock:</small>
+          <small>{quantity}</small>
         </span>
         <img src={image_url} alt={title} />
       </span>

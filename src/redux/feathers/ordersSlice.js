@@ -1,37 +1,54 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import {BASE_URL} from "../../components/api"
+import { useDispatch, useSelector } from 'react-redux';
+
 
 const initialState = {
   ordersState: [],
   status: 'idle',
 };
 
-export const postOrdersAsync = createAsyncThunk(
-  'orders/postOrdersAsync',
-  async (payload) => {
-    const response = await axios.post(
-      `https://kacha-bazar.up.railway.app/order`,
-      payload
-    );
+const token = localStorage.getItem('userToken');
+
+const headers = {
+  Authorization: `Bearer ${token}`,
+};
+
+
+export const loadOrdersAsync = createAsyncThunk(
+  'orders/loadOrdersAsync',
+  async () => {
+    const response = await axios.get(`${BASE_URL}orders/`, { headers });
     return response.data;
   }
 );
 
-export const loadOrdersAsync = createAsyncThunk(
-  'orders/loadOrdersAsync',
-  async (payload) => {
-    if (payload) {
-      const response = await axios.get(
-        `https://kacha-bazar.up.railway.app/all-orders?email=${payload}`
-      );
-      return response.data;
-    } else {
-      const response = await axios.get(`https://kacha-bazar.up.railway.app/all-orders`);
-      return response.data;
-    }
+export const postOrdersAsync = createAsyncThunk(
+  'orders/postOrdersAsync',
+  async (payload) => {    
+    const response = await axios.post(
+      `${BASE_URL}place-order/`, payload, { headers});
+    return response.data;
   }
 );
+
+
+// export const loadOrdersAsync = createAsyncThunk(
+//   'orders/loadOrdersAsync',
+//   async (payload) => {
+//     if (payload) {
+//       const response = await axios.get(
+//         `https://kacha-bazar.up.railway.app/all-orders?email=${payload}`
+//       );
+//       return response.data;
+//     } else {
+//       const response = await axios.get(`https://kacha-bazar.up.railway.app/all-orders`);
+//       return response.data;
+//     }
+//   }
+// );
 
 export const updateOrdersAsync = createAsyncThunk(
   'orders/updateOrdersAsync',

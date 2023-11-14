@@ -41,9 +41,11 @@ const Login = () => {
         setIsDisable(false);
         // console.log(data, "from login");
         dispatch(updateUserProfile(data?.user))
-        dispatch(updateToken(data?.access_token))
+        dispatch(updateToken(data?.access))
+        dispatch(updateIsLoggedIn(true))
         toast.success("Logged in successfully 🎉")
-        navigate("/")
+        localStorage.setItem("userToken", data?.access);
+        navigate("/");
       }
     } catch (err) {
       setIsDisable(false);

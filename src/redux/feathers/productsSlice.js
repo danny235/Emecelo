@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import {BASE_URL} from "../../components/api"
 
 const initialState = {
   productsState: [],
@@ -24,7 +25,7 @@ export const postProductAsync = createAsyncThunk(
 export const loadProductsAsync = createAsyncThunk(
   'products/loadProductsAsync',
   async () => {
-    const response = await axios.get('https://emecelo.onrender.com/api/products/');
+    const response = await axios.get(`${BASE_URL}products/`);
     return response.data;
   }
 );

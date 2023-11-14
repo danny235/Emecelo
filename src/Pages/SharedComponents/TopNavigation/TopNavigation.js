@@ -43,11 +43,10 @@ import styles from "./TopNavigation.module.css";
 const TopNavigation = () => {
   const [menuShow, setMenuShow] = useState(false);
   const navigate = useNavigate();
-  // const { loggedInUser } = useAuth();
-  const [loggedInUser] = useState("klsgflkg");
   const { token } = useSelector((state) => state.user);
   const { show, handleClose, handleShow } = useRedux();
   const cart = useSelector((state) => state.products.cart);
+  const loggedInUser = useSelector((state) => state.user.isLoggedIn);
 
   let total = 0;
   for (const pd of cart) {
@@ -62,7 +61,11 @@ const TopNavigation = () => {
   const handleMenuShow = () => setMenuShow(true);
   const handleMenuClose = () => setMenuShow(false);
   const handelClick = () => {
-    navigate("/checkout");
+    if (loggedInUser) {
+      navigate("/checkout");
+    } else {
+      navigate("/login");
+    }
     handleClose();
   };
 
@@ -179,7 +182,7 @@ const TopNavigation = () => {
           <Row>
             <Col lg={2} md={2} className="d-flex align-self-center">
               <NavLink to="/" className={styles.logo}>
-                <h2 style={{ color: "#ffffff" }}>Emecelo</h2>
+                <h6 style={{ color: "#ffffff" }}>Emecelo</h6>
               </NavLink>
             </Col>
             <Col lg={7} md={7} sm={12} xs={12}>
@@ -603,7 +606,7 @@ const TopNavigation = () => {
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title>
                   <NavLink to="/" onClick={handleMenuClose}>
-                  <h2 style={{color: "#10B981"}}>Emecelo</h2>
+                    <h2 style={{ color: "#10B981" }}>Emecelo</h2>
                   </NavLink>
                 </Offcanvas.Title>
               </Offcanvas.Header>
