@@ -153,8 +153,7 @@ const CheckOutPage = () => {
               height: 50,
               border: "none",
             }}
-          >
-            Done
+          > Done
           </Button>
         </Modal.Footer>
       </Modal>
