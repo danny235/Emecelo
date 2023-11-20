@@ -7,10 +7,12 @@
   background-color: #fff;
   padding: 20px;
   margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
 }
 
 #categories aside a {
-  display: block;
+  gap: 10px;
   padding: 8px;
   margin-bottom: 10px;
   font-size: 14px;
@@ -35,4 +37,13 @@
 
 #categories aside a span {
   margin: 0 20px;
+  display: flex;
+  align-items: center;
+}
+
+
+#categories aside a span h4 {
+  font-size: 15px;
+  text-transform: capitalize;
+  color: #4b5563;
 }

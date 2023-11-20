@@ -6,28 +6,11 @@ import { useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import aboutUsIcon from "../../../assets/images/aboutUs.svg";
 import cartIcon from "../../../assets/images/cart.svg";
-import breakfast from "../../../assets/images/categories/Breakfast.webp";
 import cooking from "../../../assets/images/categories/Cooking.webp";
-import apple from "../../../assets/images/categories/apple.webp";
-import baby from "../../../assets/images/categories/baby.webp";
-import beauty from "../../../assets/images/categories/beauty.webp";
-import fruits from "../../../assets/images/categories/cabbage.webp";
-import fish from "../../../assets/images/categories/carp-fish.webp";
-import cat from "../../../assets/images/categories/cat.webp";
-import chili from "../../../assets/images/categories/chili-sauce.webp";
-import chips from "../../../assets/images/categories/chips.webp";
-import cleaner from "../../../assets/images/categories/cleaner.webp";
-import cookie from "../../../assets/images/categories/cookie.webp";
-import dumbbell from "../../../assets/images/categories/dumbbell.webp";
-import honey from "../../../assets/images/categories/honey.webp";
-import milk from "../../../assets/images/categories/milk.webp";
-import drink from "../../../assets/images/categories/soft-drink.webp";
-import jam from "../../../assets/images/categories/strawberry-jam.webp";
 import checkoutIcon from "../../../assets/images/checkout.svg";
 import contactUsIcon from "../../../assets/images/contactUs.svg";
 import errorIcon from "../../../assets/images/error.svg";
 import faqIcon from "../../../assets/images/faq.svg";
-import footerLogo from "../../../assets/images/footerLogo.svg";
 import offerIcon from "../../../assets/images/gift.svg";
 import menuBarIcon from "../../../assets/images/menuBar.svg";
 import notifyIcon from "../../../assets/images/notifyIcon.svg";
@@ -35,6 +18,7 @@ import privacyIcon from "../../../assets/images/privacy.svg";
 import searchIcon from "../../../assets/images/search.svg";
 import termsIcon from "../../../assets/images/terms.svg";
 import userIcon from "../../../assets/images/user.svg";
+import { addCommas } from "../../../fuctions";
 import useRedux from "../../../hooks/useRedux";
 import Cart from "../Cart/Cart";
 import ProfileDetails from "../ProfileDetails/ProfileDetails";
@@ -47,6 +31,8 @@ const TopNavigation = () => {
   const { show, handleClose, handleShow } = useRedux();
   const cart = useSelector((state) => state.products.cart);
   const loggedInUser = useSelector((state) => state.user.isLoggedIn);
+  const { country } = useSelector((state) => state.user);
+  const { categories } = useSelector((state) => state.products);
 
   let total = 0;
   for (const pd of cart) {
@@ -55,8 +41,11 @@ const TopNavigation = () => {
 
   let totalPrice = 0;
   for (const pd of cart) {
-    totalPrice = totalPrice + Number(pd.totalPrice);
+    totalPrice =
+      totalPrice +
+      Number(country === "Nigeria" ? pd.totalNairaPrice : pd.totalPrice);
   }
+  console.log(totalPrice);
 
   const handleMenuShow = () => setMenuShow(true);
   const handleMenuClose = () => setMenuShow(false);
@@ -68,112 +57,6 @@ const TopNavigation = () => {
     }
     handleClose();
   };
-
-  const categories = [
-    {
-      id: 1,
-      name: "Fruits & Vegetable",
-      image: fruits,
-      link: "/categories/Fresh%20Vegetable",
-    },
-    {
-      id: 2,
-      name: "Fish & Meat",
-      image: fish,
-      link: "/categories/Fish%20and%20Meat",
-    },
-    {
-      id: 3,
-      name: "Organic Food",
-      image: apple,
-      link: "/categories/Organic%20Food",
-    },
-    {
-      id: 4,
-      name: "Cooking Essentials",
-      image: cooking,
-      link: "/categories/Cooking%20Essentials",
-    },
-    {
-      id: 5,
-      name: "Breakfast",
-      image: breakfast,
-      link: "/categories/Breakfast",
-    },
-    {
-      id: 6,
-      name: "Drinks",
-      image: drink,
-      link: "/categories/Drinks",
-    },
-    {
-      id: 7,
-      name: "Milk & Dairy",
-      image: milk,
-      link: "/categories/Milk%20and%20Dairy",
-    },
-
-    {
-      id: 8,
-      name: "Honey",
-      image: honey,
-      link: "/categories/Honey",
-    },
-    {
-      id: 9,
-      name: "Jam & Jelly",
-      image: jam,
-      link: "/categories/Jam%20and%20Jelly",
-    },
-    {
-      id: 10,
-      name: "Beauty & health",
-      image: beauty,
-      link: "/categories/Beauty%20and%20Health",
-    },
-    {
-      id: 11,
-      name: "Sauces",
-      image: dumbbell,
-      link: "/categories/Sauces",
-    },
-    {
-      id: 12,
-      name: "Pickles & Condiments",
-      image: chili,
-      link: "/categories/Pickles%20and%20Condiments",
-    },
-    {
-      id: 13,
-      name: "Snacks & Instant",
-      image: chips,
-      link: "/categories/Snacks%20and%20Instant",
-    },
-    {
-      id: 14,
-      name: "Biscuits & Cakes",
-      link: "/categories/Biscuits%20and%20Cakes",
-      image: cookie,
-    },
-    {
-      id: 15,
-      name: "Household Tools",
-      link: "/categories/Household%20Tools",
-      image: cleaner,
-    },
-    {
-      id: 16,
-      name: "Baby Care",
-      image: baby,
-      link: "/categories/Baby%20Care",
-    },
-    {
-      id: 17,
-      name: "Pet Care",
-      image: cat,
-      link: "/categories/Pet%20Care",
-    },
-  ];
 
   return (
     <>
@@ -289,7 +172,7 @@ const TopNavigation = () => {
 
                       <div className={styles.cart__item__container}>
                         {cart.map((pd) => (
-                          <Cart key={pd.item._id} pd={pd} />
+                          <Cart key={pd.item.id} pd={pd} />
                         ))}
                       </div>
 
@@ -299,7 +182,11 @@ const TopNavigation = () => {
                         disabled={totalPrice ? false : true}
                       >
                         Proceed To Checkout
-                        <span>${totalPrice}.00</span>
+                        <span>
+                          {country === "Nigeria"
+                            ? `₦${addCommas(totalPrice)}`
+                            : `$${addCommas(totalPrice)}`}
+                        </span>
                       </button>
                     </Offcanvas.Body>
                   </Offcanvas>
@@ -325,11 +212,18 @@ const TopNavigation = () => {
                       <ul>
                         {categories.map((category) => (
                           <NavLink
-                            to={!category.link ? "/" : category.link}
+                            to={`/categories/${category.slug}`}
                             key={category.id}
                           >
-                            <img src={category.image} alt={category.name} />
-                            {category.name}
+                            <img
+                              src={category?.icon ? category?.icon : cooking}
+                              alt={category?.title}
+                            />
+                            <p style={{textTransform: "capitalize"}}>
+
+                            {category?.title}
+                            </p>
+
                           </NavLink>
                         ))}
                       </ul>
@@ -357,7 +251,7 @@ const TopNavigation = () => {
                         style={{ fontSize: "10px", marginLeft: "8px" }}
                       />
                       <ul>
-                        <li>
+                        {/* <li>
                           <NavLink
                             to="/offer"
                             className={(navInfo) =>
@@ -366,8 +260,8 @@ const TopNavigation = () => {
                           >
                             <img src={offerIcon} alt="offerIcon" /> Offer
                           </NavLink>
-                        </li>
-                        <li>
+                        </li> */}
+                        {/* <li>
                           <NavLink
                             to="/checkout"
                             className={(navInfo) =>
@@ -377,7 +271,7 @@ const TopNavigation = () => {
                             <img src={checkoutIcon} alt="checkoutIcon" />
                             Checkout
                           </NavLink>
-                        </li>
+                        </li> */}
 
                         <li>
                           <NavLink
@@ -437,16 +331,7 @@ const TopNavigation = () => {
                           </NavLink>
                         </li>
 
-                        <li>
-                          <NavLink
-                            to="/not-found"
-                            className={(navInfo) =>
-                              navInfo.isActive ? styles.active : ""
-                            }
-                          >
-                            <img src={errorIcon} alt="errorIcon" /> 404
-                          </NavLink>
-                        </li>
+                        
                       </ul>
                     </span>
                     {/* <NavLink to='/offers' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
@@ -624,7 +509,7 @@ const TopNavigation = () => {
                       </NavLink>
                     )}
                   </li>
-                  <li>
+                  {/* <li>
                     <NavLink
                       to="/offer"
                       className={(navInfo) =>
@@ -633,8 +518,8 @@ const TopNavigation = () => {
                     >
                       <img src={offerIcon} alt="offerIcon" /> Offer
                     </NavLink>
-                  </li>
-                  <li>
+                  </li> */}
+                  {/* <li>
                     <NavLink
                       to="/checkout"
                       className={(navInfo) =>
@@ -644,9 +529,9 @@ const TopNavigation = () => {
                       <img src={checkoutIcon} alt="checkoutIcon" />
                       Checkout
                     </NavLink>
-                  </li>
+                  </li> */}
 
-                  <li>
+                  {/* <li>
                     <NavLink
                       to="/faq"
                       className={(navInfo) =>
@@ -655,7 +540,7 @@ const TopNavigation = () => {
                     >
                       <img src={faqIcon} alt="faqIcon" /> FAQ
                     </NavLink>
-                  </li>
+                  </li> */}
 
                   <li>
                     <NavLink
@@ -701,17 +586,6 @@ const TopNavigation = () => {
                     >
                       <img src={termsIcon} alt="termsIcon" />
                       Terms & Conditions
-                    </NavLink>
-                  </li>
-
-                  <li>
-                    <NavLink
-                      to="/not-found"
-                      className={(navInfo) =>
-                        navInfo.isActive ? styles.active : ""
-                      }
-                    >
-                      <img src={errorIcon} alt="errorIcon" /> 404
                     </NavLink>
                   </li>
                 </ul>

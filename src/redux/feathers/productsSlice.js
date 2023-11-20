@@ -7,9 +7,18 @@ const initialState = {
   productsState: [],
   queryProductsState: [],
   cart: [],
+  categories: [],
+  categoriesStatus: "idle",
+  categoriesError: "",
   status: 'idle',
   error: '',
+
 };
+
+export const loadCategoriesAsync = createAsyncThunk("categories/loadCategoriesAsync", async()=> {
+  const response = await axios.get(`${BASE_URL}categories/`);
+  return response.data
+})
 
 export const postProductAsync = createAsyncThunk(
   'products/postProductAsync',
@@ -67,12 +76,34 @@ export const productsSlice = createSlice({
         return items;
       });
     },
+    handleNairaIncrease: (state, { payload }) => {
+      state.cart = state.cart.map((item) => {
+        let items = item;
+        if (item.item.id === payload) {
+          item.quantity = item.quantity + 1;
+          item.totalNairaPrice = Number(item.quantity) * Number(item.item.price_naira);
+          items = { ...item };
+        }
+        return items;
+      });
+    },
     handleDecrease: (state, { payload }) => {
       state.cart = state.cart.map((item) => {
         let items = item;
         if (item.item.id === payload && item.quantity > 1) {
           item.quantity = item.quantity - 1;
           item.totalPrice = Number(item.quantity) * Number(item.item.price);
+          items = { ...item };
+        }
+        return items;
+      });
+    },
+    handleNairaDecrease: (state, { payload }) => {
+      state.cart = state.cart.map((item) => {
+        let items = item;
+        if (item.item.id === payload && item.quantity > 1) {
+          item.quantity = item.quantity - 1;
+          item.totalNairaPrice = Number(item.quantity) * Number(item.item.price_naira);
           items = { ...item };
         }
         return items;
@@ -123,6 +154,18 @@ export const productsSlice = createSlice({
       state.status = 'Rejected';
       state.error = message;
     });
+    builder.addCase(loadCategoriesAsync.pending, (state, action)=> {
+      state.categoriesStatus = "Pending"
+    });
+    builder.addCase(loadCategoriesAsync.fulfilled, (state, { payload }) => {
+      state.categories = payload;
+      state.status = "Success"
+    });
+    builder.addCase(loadCategoriesAsync.rejected, (state, { error: { message } })=> {
+      state.status = 'Rejected';
+      state.error = message;
+    });
+
   },
 });
 
@@ -134,6 +177,8 @@ export const {
   handleIncrease,
   handleDecrease,
   productSorting,
+  handleNairaDecrease,
+  handleNairaIncrease
 } = productsSlice.actions;
 
 export default productsSlice.reducer;

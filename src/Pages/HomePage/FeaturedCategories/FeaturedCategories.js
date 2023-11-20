@@ -20,100 +20,102 @@ import drink from '../../../assets/images/categories/soft-drink.webp';
 import jam from '../../../assets/images/categories/strawberry-jam.webp';
 import CategoryCard from '../CategoryCard/CategoryCard';
 import styles from './FeaturedCategories.module.css';
+import { useSelector } from 'react-redux';
 
 const FeaturedCategories = () => {
-  const categories = [
-    {
-      id: 1,
-      name: 'Fish & Meat',
-      images: fish,
-    },
-    {
-      id: 2,
-      name: 'Fruits & Vegetable',
-      images: fruits,
-    },
-    {
-      id: 3,
-      name: 'Fresh Seafood',
-      images: shrimp,
-    },
-    {
-      id: 4,
-      name: 'Cooking Essentials',
-      images: cooking,
-    },
-    {
-      id: 5,
-      name: 'Breakfast',
-      images: breakfast,
-    },
-    {
-      id: 6,
-      name: 'Drinks',
-      images: drink,
-    },
-    {
-      id: 7,
-      name: 'Milk & Dairy',
-      images: milk,
-    },
-    {
-      id: 8,
-      name: 'Organic Food',
-      images: apple,
-    },
-    {
-      id: 9,
-      name: 'Honey',
-      images: honey,
-    },
-    {
-      id: 10,
-      name: 'Sauces & Pickles',
-      images: chili,
-    },
-    {
-      id: 11,
-      name: 'Jam & Jelly',
-      images: jam,
-    },
-    {
-      id: 12,
-      name: 'Snacks & Instant',
-      images: chips,
-    },
-    {
-      id: 13,
-      name: 'Biscuits & Cakes',
-      images: cookie,
-    },
-    {
-      id: 14,
-      name: 'Household Tools',
-      images: cleaner,
-    },
-    {
-      id: 15,
-      name: 'Baby Care',
-      images: baby,
-    },
-    {
-      id: 16,
-      name: 'Pet Care',
-      images: cat,
-    },
-    {
-      id: 17,
-      name: 'Beauty & health',
-      images: beauty,
-    },
-    {
-      id: 18,
-      name: 'Sports & Fitness',
-      images: dumbbell,
-    },
-  ];
+  const {categories} = useSelector(state=>state.products)
+  // const categories = [
+  //   {
+  //     id: 1,
+  //     name: 'Fish & Meat',
+  //     images: fish,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: 'Fruits & Vegetable',
+  //     images: fruits,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: 'Fresh Seafood',
+  //     images: shrimp,
+  //   },
+  //   {
+  //     id: 4,
+  //     name: 'Cooking Essentials',
+  //     images: cooking,
+  //   },
+  //   {
+  //     id: 5,
+  //     name: 'Breakfast',
+  //     images: breakfast,
+  //   },
+  //   {
+  //     id: 6,
+  //     name: 'Drinks',
+  //     images: drink,
+  //   },
+  //   {
+  //     id: 7,
+  //     name: 'Milk & Dairy',
+  //     images: milk,
+  //   },
+  //   {
+  //     id: 8,
+  //     name: 'Organic Food',
+  //     images: apple,
+  //   },
+  //   {
+  //     id: 9,
+  //     name: 'Honey',
+  //     images: honey,
+  //   },
+  //   {
+  //     id: 10,
+  //     name: 'Sauces & Pickles',
+  //     images: chili,
+  //   },
+  //   {
+  //     id: 11,
+  //     name: 'Jam & Jelly',
+  //     images: jam,
+  //   },
+  //   {
+  //     id: 12,
+  //     name: 'Snacks & Instant',
+  //     images: chips,
+  //   },
+  //   {
+  //     id: 13,
+  //     name: 'Biscuits & Cakes',
+  //     images: cookie,
+  //   },
+  //   {
+  //     id: 14,
+  //     name: 'Household Tools',
+  //     images: cleaner,
+  //   },
+  //   {
+  //     id: 15,
+  //     name: 'Baby Care',
+  //     images: baby,
+  //   },
+  //   {
+  //     id: 16,
+  //     name: 'Pet Care',
+  //     images: cat,
+  //   },
+  //   {
+  //     id: 17,
+  //     name: 'Beauty & health',
+  //     images: beauty,
+  //   },
+  //   {
+  //     id: 18,
+  //     name: 'Sports & Fitness',
+  //     images: dumbbell,
+  //   },
+  // ];
 
   return (
     <section id={styles.categories}>

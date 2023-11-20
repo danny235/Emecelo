@@ -20,7 +20,7 @@ import honey from '../../../assets/images/categories/honey.webp';
 import milk from '../../../assets/images/categories/milk.webp';
 import drink from '../../../assets/images/categories/soft-drink.webp';
 import jam from '../../../assets/images/categories/strawberry-jam.webp';
-import { loadProductsAsync } from '../../../redux/feathers/productsSlice';
+import { loadCategoriesAsync, loadProductsAsync } from '../../../redux/feathers/productsSlice';
 import CartTracker from '../../HomePage/CartTracker/CartTracker';
 import DailyNeeds from '../../SharedComponents/DailyNeeds/DailyNeeds';
 import Footer from '../../SharedComponents/Footer/Footer';
@@ -34,15 +34,11 @@ const Categories = () => {
   //   dispatch(loadProductsAsync());
   // }, [dispatch]);
 
-  const state = useSelector((state) => state.products);
+  const {categories, categoriesStatus} = useSelector((state) => state.products);
 
-  let category = [];
+  
 
-  for (const pd of state.productsState) {
-    category = [...category, pd.category];
-  }
-
-  const uniqueCategory = [...new Set(category)];
+  const uniqueCategory = [...new Set(categories)];
 
   const allPd = [];
 
@@ -101,11 +97,19 @@ const Categories = () => {
   }
 
   useEffect(() => {
-    document.title = 'All Categories | Kacha Bazar';
+    document.title = 'All Categories | Emecelo';
     window.scrollTo({
       top: 0,
     });
   }, []);
+
+  useEffect(()=>{
+    dispatch(loadCategoriesAsync())
+  }, [])
+
+  console.log(categories)
+
+
 
   return (
     <>
@@ -114,14 +118,15 @@ const Categories = () => {
       <section id={styles.categories}>
         <Container>
           <Row>
-            {state.error && toast.error(state.error)}
+            
             <Col lg={3}>
               <h3 className='mb-4'>Categories</h3>
               <aside id={styles.aside}>
-                {allPd.map((pd, idx) => (
-                  <NavLink key={idx} to={`/categories/${pd.name}`} className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
+                {categories.map((pd, idx) => (
+                  <NavLink key={idx} to={`/categories/${pd.slug}`} className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                     <span>
-                      <img src={pd.img} alt={pd.name} />
+                      <img src={pd.icon? pd.icon : cooking} alt={pd.title} />
+                      <h4>{pd.title}</h4>
                     </span>
                     {pd.name}
                   </NavLink>
@@ -133,7 +138,10 @@ const Categories = () => {
             </Col>
           </Row>
         </Container>
+        
+        
       </section>
+
       <DailyNeeds />
       <Footer />
     </>

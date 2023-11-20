@@ -18,6 +18,100 @@ form select:focus {
   border: 1px solid #10b981;
 }
 
+.activeProduct {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+  width: 100%;
+}
+
+.activeProduct img {
+  width: 50%;
+}
+
+.productContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.productContent h4 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.productContent .productStock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: #F3F4F6;
+  font-size: 12px;
+  padding: 10px;
+  gap: 5px;
+}
+
+.productContent .productStock :nth-child(1) {
+  color: #10b981 !important;
+}
+
+.productContent .productStock :nth-child(2) {
+  color: tomato !important;
+}
+
+.productContent p {
+  font-size: 15px;
+}
+
+.productContent button img {
+  height: 20px;
+  width: 20px;
+}
+
+.productContent button {
+  border: 1px solid #10b981;
+  padding: 4px 5px;
+  outline: 0;
+  background-color: #fff;
+  border-radius: 5px;
+  transition: all linear 0.3s;
+
+}
+
+.productContent button svg {
+  transition: all linear 0.3s;
+}
+
+.productContent button:hover svg {
+  fill: #fff;
+}
+
+.productContent button:hover {
+  background-color: #10b981;
+}
+
+.productContent button:disabled {
+  border: 1px solid #10b98149;
+  cursor: not-allowed;
+  background-color: #10b98149;
+}
+
+.productContent button:disabled:hover {
+  border: 1px solid #10b98149;
+  cursor: not-allowed;
+  background-color: #10b98149;
+}
+
+.productContent button:disabled:hover svg {
+  fill: #10b981;
+}
+.modalStyle {
+  max-width: 90%;
+}
+
 @media only screen and (max-width: 1100px) {
   .category__container {
     grid-template-columns: repeat(3, 1fr);
@@ -27,5 +121,17 @@ form select:focus {
 @media only screen and (max-width: 768px) {
   .category__container {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .activeProduct {
+    flex-direction: column;
+  }
+
+  .productContent {
+    align-self: flex-start;
+  }
+
+  .modalStyle {
+    max-width: 100%;
   }
 }

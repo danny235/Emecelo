@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../redux/feathers/productsSlice";
 import styles from "./ProductCard.module.css";
+import { addCommas } from "../../../fuctions";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ onClick, product }) => {
   const [isDisable, setIsDisable] = useState(false);
   const dispatch = useDispatch();
-  const { image_url, title, price, id, quantity } = product;
+  const { image_url, title, price, id, quantity, price_naira } = product;
   const cart = useSelector((state) => state.products.cart);
+  const { country, status } = useSelector((state) => state.user);
 
   useEffect(() => {
     const pd = cart.find((pd) => pd.item.id === id);
@@ -21,6 +23,7 @@ const ProductCard = ({ product }) => {
     pd.item = item;
     pd.quantity = 1;
     pd.totalPrice = pd.item.price;
+    pd.totalNairaPrice = pd.item.price_naira
     dispatch(addToCart(pd));
   };
 
@@ -31,12 +34,12 @@ const ProductCard = ({ product }) => {
         <small>Stock:</small>
           <small>{quantity}</small>
         </span>
-        <img src={image_url} alt={title} />
+        <img onClick={onClick} src={image_url} alt={title} />
       </span>
       <div className={styles.card__content}>
         <h6>{title}</h6>
         <span className="d-flex justify-content-between align-self-center mt-3">
-          <h4> ${price}</h4>
+          <h4> {country === "Nigeria" ? `₦${addCommas(price_naira)}` :`$${addCommas(price)}`}</h4>
           <button onClick={() => handleClick(product)} disabled={isDisable}>
             <svg
               stroke="currentColor"
