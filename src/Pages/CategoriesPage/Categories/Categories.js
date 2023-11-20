@@ -26,6 +26,7 @@ import DailyNeeds from '../../SharedComponents/DailyNeeds/DailyNeeds';
 import Footer from '../../SharedComponents/Footer/Footer';
 import TopNavigation from '../../SharedComponents/TopNavigation/TopNavigation';
 import styles from './Categories.module.css';
+import LoadingSpinner from '../../SharedComponents/LoadingSpinner/LoadingSpinner';
 
 const Categories = () => {
   const dispatch = useDispatch();
@@ -38,63 +39,6 @@ const Categories = () => {
 
   
 
-  const uniqueCategory = [...new Set(categories)];
-
-  const allPd = [];
-
-  for (const pd of uniqueCategory) {
-    if (pd === 'Fresh Vegetable') {
-      allPd.push({ name: 'Fresh Vegetable', img: vegetable });
-    }
-    if (pd === 'Fish and Meat') {
-      allPd.push({ name: 'Fish and Meat', img: fish });
-    }
-    if (pd === 'Organic Food') {
-      allPd.push({ name: 'Organic Food', img: apple });
-    }
-    if (pd === 'Cooking Essentials') {
-      allPd.push({ name: 'Cooking Essentials', img: cooking });
-    }
-    if (pd === 'Breakfast') {
-      allPd.push({ name: 'Breakfast', img: breakfast });
-    }
-    if (pd === 'Drinks') {
-      allPd.push({ name: 'Drinks', img: drink });
-    }
-    if (pd === 'Milk and Dairy') {
-      allPd.push({ name: 'Milk and Dairy', img: milk });
-    }
-    if (pd === 'Honey') {
-      allPd.push({ name: 'Honey', img: honey });
-    }
-    if (pd === 'Jam and Jelly') {
-      allPd.push({ name: 'Jam and Jelly', img: jam });
-    }
-    if (pd === 'Beauty and Health') {
-      allPd.push({ name: 'Beauty and Health', img: beauty });
-    }
-    if (pd === 'Sauces') {
-      allPd.push({ name: 'Sauces', img: dumbbell });
-    }
-    if (pd === 'Pickles and Condiments') {
-      allPd.push({ name: 'Pickles and Condiments', img: chili });
-    }
-    if (pd === 'Snacks and Instant') {
-      allPd.push({ name: 'Snacks and Instant', img: chips });
-    }
-    if (pd === 'Biscuits and Cakes') {
-      allPd.push({ name: 'Biscuits and Cakes', img: cookie });
-    }
-    if (pd === 'Household Tools') {
-      allPd.push({ name: 'Household Tools', img: cleaner });
-    }
-    if (pd === 'Baby Care') {
-      allPd.push({ name: 'Baby Care', img: baby });
-    }
-    if (pd === 'Pet Care') {
-      allPd.push({ name: 'Pet Care', img: cat });
-    }
-  }
 
   useEffect(() => {
     document.title = 'All Categories | Emecelo';
@@ -107,7 +51,7 @@ const Categories = () => {
     dispatch(loadCategoriesAsync())
   }, [])
 
-  console.log(categories)
+
 
 
 
@@ -131,12 +75,15 @@ const Categories = () => {
                     {pd.name}
                   </NavLink>
                 ))}
+                {categoriesStatus === "Pending" && <LoadingSpinner />}
               </aside>
             </Col>
             <Col lg={9}>
               <Outlet />
             </Col>
           </Row>
+
+
         </Container>
         
         

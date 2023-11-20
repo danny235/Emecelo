@@ -64,7 +64,7 @@ const SingleCategory = () => {
           <div className={styles.category__container}>
             {categories?.filter((cat)=>cat.slug === searchString)?.map((product) => 
               product?.products.length !== 0 ?
-              product?.products?.map((prod)=> <ProductCard  onClick={() => {
+              product?.products?.filter((product)=> product?.show)?.map((prod)=> <ProductCard  onClick={() => {
                 setIsModalVisible(true);
                 setActiveProduct(prod);
                
