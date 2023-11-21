@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Col, Container, Offcanvas, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import aboutUsIcon from "../../../assets/images/aboutUs.svg";
 import cartIcon from "../../../assets/images/cart.svg";
 import cooking from "../../../assets/images/categories/Cooking.webp";
@@ -24,7 +24,7 @@ import Cart from "../Cart/Cart";
 import ProfileDetails from "../ProfileDetails/ProfileDetails";
 import styles from "./TopNavigation.module.css";
 
-const TopNavigation = () => {
+const TopNavigation = ({page}) => {
   const [menuShow, setMenuShow] = useState(false);
   const navigate = useNavigate();
   const { token } = useSelector((state) => state.user);
@@ -33,6 +33,7 @@ const TopNavigation = () => {
   const loggedInUser = useSelector((state) => state.user.isLoggedIn);
   const { country } = useSelector((state) => state.user);
   const { categories } = useSelector((state) => state.products);
+  const [searchText, setSearchText] = useState("")
 
   let total = 0;
   for (const pd of cart) {
@@ -45,10 +46,25 @@ const TopNavigation = () => {
       totalPrice +
       Number(country === "Nigeria" ? pd.totalNairaPrice : pd.totalPrice);
   }
-  console.log(totalPrice);
+  
 
   const handleMenuShow = () => setMenuShow(true);
+  const location = useLocation();
   const handleMenuClose = () => setMenuShow(false);
+
+  const handleButtonClick = () => {
+    const searchParams = new URLSearchParams();
+    searchParams.set('results', searchText);
+
+    // Check if the current location is already /search
+    if (location.pathname === '/search/') {
+      // Update search parameters without full navigation
+      navigate({ search: `?${searchParams.toString()}` });
+    } else {
+      // Navigate to the /search route with the specified search parameters
+      navigate(`search/?${searchParams.toString()}`);
+    }
+  };
   const handelClick = () => {
     if (loggedInUser) {
       navigate("/place-order");
@@ -78,8 +94,13 @@ const TopNavigation = () => {
                   placeholder="Search for products (e.g. fish, apple, oil)"
                   autoComplete="off"
                   spellCheck="false"
+                  value={searchText}
+                  onChange={(e)=> {
+                    e.preventDefault();
+                    setSearchText(e.target.value);
+                  }}
                 />
-                <button type="submit">
+                <button onClick={()=>handleButtonClick()} type="submit">
                   <img src={searchIcon} alt="searchIcon" />
                 </button>
               </form>

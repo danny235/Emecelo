@@ -10,6 +10,7 @@ import Profile from "./Pages/DashboardPage/Profile/Profile";
 import PreLoader from "./Pages/SharedComponents/PreLoader/PreLoader";
 import ScrollToTop from "./Pages/SharedComponents/ScrollToTop/ScrollToTop";
 import MainCheckoutPage from "./Pages/CheckOutPage/MainCheckoutPage";
+import SearchResults from "./Pages/Search/SearchResults";
 const Home = lazy(() => import("./Pages/HomePage/Home/Home"));
 const Login = lazy(() => import("./Pages/AuthPage/LogIn/Login"));
 const AboutUs = lazy(() => import("./Pages/AboutUsPage/AboutUs/AboutUs"));
@@ -65,12 +66,14 @@ function App() {
           </Route>
           <Route path="/place-order" element={<CheckOutPage />} />
           <Route path="/checkout" element={<MainCheckoutPage />} />
+          <Route path="/search" element={<SearchResults />} />
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="/dashboard" element={<Profile />} />
             <Route path="/dashboard/profile" element={<Profile />} />
             <Route path="/dashboard/edit-profile" element={<Profile />} />
             <Route path="/dashboard/review" element={<AddReview />} />
             <Route path="/dashboard/my-orders" element={<MyOrders />} />
+            
             {/* <Route
               path='/dashboard/manage-product'
               element={

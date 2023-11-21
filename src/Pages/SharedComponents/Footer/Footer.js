@@ -16,7 +16,7 @@ const Footer = () => {
             <Col lg={6} md={12} className={styles.logo}>
             <h2 style={{color: "#10B981"}}>Emecelo</h2>
               <p>
-                There are many popular products you will find our shop, Choose your daily necessary product from our KachaBazar shop and get some special offer.
+                There are many popular products you will find our shop, Choose your daily necessary product from our Emecelo shop and get some special offer.
               </p>
               <h6>Follow Us</h6>
               <ul className={styles.social__link}>
@@ -31,22 +31,22 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href='https://www.instagram.com/farhan__nahid/' target='_blank' rel='noopener noreferrer'>
+                  <a href='#' target='_blank' rel='noopener noreferrer'>
                     <FontAwesomeIcon icon={faInstagram} />
                   </a>
                 </li>
                 <li>
-                  <a href='https://www.linkedin.com/in/farhan-nahid/' target='_blank' rel='noopener noreferrer'>
+                  <a href='#' target='_blank' rel='noopener noreferrer'>
                     <FontAwesomeIcon icon={faLinkedin} />
                   </a>
                 </li>
                 <li>
-                  <a href='tel:01879056875'>
+                  <a href='#'>
                     <FontAwesomeIcon icon={faWhatsapp} />
                   </a>
                 </li>
                 <li>
-                  <a href='https://github.com/farhan-nahid' target='_blank' rel='noopener noreferrer'>
+                  <a href='#' target='_blank' rel='noopener noreferrer'>
                     <FontAwesomeIcon icon={faGithub} />
                   </a>
                 </li>
@@ -117,9 +117,9 @@ const Footer = () => {
       </footer>
       <section id={styles.copyright__area} className='container'>
         <small>
-          Copyright 2021 @
-          <a href='https://www.facebook.com/dev.farhanNahid' target='_blank' rel='noopener noreferrer' className='mx-1'>
-            Farhan
+          Copyright 2023 @
+          <a href='#' target='_blank' rel='noopener noreferrer' className='mx-1'>
+            Emecelo
           </a>
           , All rights reserved.
         </small>

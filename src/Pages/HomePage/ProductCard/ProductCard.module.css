@@ -6,6 +6,8 @@
   text-align: left;
   cursor: pointer;
   transition: all linear 0.3s;
+  width: fit-content;
+  padding: 20px;
 }
 
 .card__img {
@@ -113,4 +115,11 @@
 
 .card .card__content button:disabled:hover svg {
   fill: #10b981;
+}
+
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
 }

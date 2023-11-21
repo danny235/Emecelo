@@ -28,7 +28,7 @@ const Products = () => {
     }
   }, [activeProduct?.id, cart]);
 
-  console.log(cart, "from line 28");
+  
 
   const handleClick = (item) => {
     const pd = {};

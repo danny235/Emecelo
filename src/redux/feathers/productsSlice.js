@@ -159,10 +159,10 @@ export const productsSlice = createSlice({
     });
     builder.addCase(loadCategoriesAsync.fulfilled, (state, { payload }) => {
       state.categories = payload;
-      state.status = "Success"
+      state.categoriesStatus = "Success"
     });
     builder.addCase(loadCategoriesAsync.rejected, (state, { error: { message } })=> {
-      state.status = 'Rejected';
+      state.categoriesStatus = 'Rejected';
       state.error = message;
     });
 
