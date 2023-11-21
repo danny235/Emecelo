@@ -14,7 +14,7 @@ import Footer from '../SharedComponents/Footer/Footer';
 import TopNavigation from '../SharedComponents/TopNavigation/TopNavigation';
 import styles from './CheckoutPage.module.css';
 
-const CheckOutPage = () => {
+const MainCheckoutPage = () => {
   const [data, setData] = useState({});
   const [isDisable, setIsDisable] = useState(false);
 
@@ -223,4 +223,4 @@ const CheckOutPage = () => {
   );
 };
 
-export default CheckOutPage;
+export default MainCheckoutPage;

@@ -237,17 +237,7 @@ const CheckOutPage = () => {
                     <p>No items added in your cart. Please add product to your cart list.</p>
                   </div>
                 )}
-                <ul className={styles.total__cost}>
-                  <li>
-                    <span>Subtotal</span> <span>${totalPrice}.00</span>
-                  </li>
-                  <li>
-                    <span>Shipping Cost</span> <span>${shipping}.00</span>
-                  </li>
-                  <li>
-                    <span>TOTAL COST</span> <span>${total}.00</span>
-                  </li>
-                </ul>
+                
               </div>
             </Col>
           </Row>

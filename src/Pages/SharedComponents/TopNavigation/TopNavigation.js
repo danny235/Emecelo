@@ -51,7 +51,7 @@ const TopNavigation = () => {
   const handleMenuClose = () => setMenuShow(false);
   const handelClick = () => {
     if (loggedInUser) {
-      navigate("/checkout");
+      navigate("/place-order");
     } else {
       navigate("/login");
     }

@@ -9,6 +9,7 @@ import MyOrders from "./Pages/DashboardPage/MyOrders/MyOrders";
 import Profile from "./Pages/DashboardPage/Profile/Profile";
 import PreLoader from "./Pages/SharedComponents/PreLoader/PreLoader";
 import ScrollToTop from "./Pages/SharedComponents/ScrollToTop/ScrollToTop";
+import MainCheckoutPage from "./Pages/CheckOutPage/MainCheckoutPage";
 const Home = lazy(() => import("./Pages/HomePage/Home/Home"));
 const Login = lazy(() => import("./Pages/AuthPage/LogIn/Login"));
 const AboutUs = lazy(() => import("./Pages/AboutUsPage/AboutUs/AboutUs"));
@@ -31,6 +32,7 @@ const ResetPassword = lazy(() =>
 const TermsAndCondition = lazy(() =>
   import("./Pages/TermsAndConditionPage/TermsAndCondition")
 );
+const CheckoutMainPage = lazy(() => import("./Pages/CheckOutPage/MainCheckoutPage"));
 
 function App() {
   const { token } = useSelector((state) => state.user);
@@ -61,7 +63,8 @@ function App() {
               element={<SingleCategory />}
             />
           </Route>
-          <Route path="/checkout" element={<CheckOutPage />} />
+          <Route path="/place-order" element={<CheckOutPage />} />
+          <Route path="/checkout" element={<MainCheckoutPage />} />
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="/dashboard" element={<Profile />} />
             <Route path="/dashboard/profile" element={<Profile />} />

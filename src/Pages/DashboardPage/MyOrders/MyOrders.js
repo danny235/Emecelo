@@ -1,5 +1,4 @@
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,6 +25,8 @@ const MyOrders = () => {
   // const { loggedInUser } = useAuth();
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
 
   const { userProfile } = useSelector((state) => state.user);
 
@@ -103,9 +104,14 @@ const MyOrders = () => {
                         {/* <span className="bg bg-secondary text-sm text-white rounded mr-5" onClick={() => handleDeleteOrder(order.order_id)}>
                         <button className="btn btn-sm text-white rounded">Details</button>
                         </span> */}
-                        <button className="px-3 py-1 bg-outline-secondary bg-info  font-semibold rounded-full" onClick={() => handleDeleteOrder(order.order_id)}>
-                            Checkout
-                        </button>
+                      {order.status === null  ? <button className="px-3 py-1 button-main rounded border-0 text-white" onClick={() => navigate('/checkout')}>
+                          Checkout
+                      </button>
+                    :  
+                    <button className="px-3 py-1 button-main border-0 rounded text-white" onClick={() => navigate('/')}>
+                       View order
+                    </button>
+                    }
                       </td>
                     </tr>
                   ))}
