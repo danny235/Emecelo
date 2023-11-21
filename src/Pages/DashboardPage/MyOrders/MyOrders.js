@@ -85,10 +85,8 @@ const MyOrders = () => {
                     <th>#</th>
                     <th>Order ID</th>
 
-                    <th>Shipping Fee</th>
-                    <th>Address</th>
                     <th>Status</th>
-                    <th>Total</th>
+               
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -97,20 +95,17 @@ const MyOrders = () => {
                     <tr key={order.order_id}>
                       <td className="fw-bold">{idx + 1}</td>
                       <td>{order.order_id}</td>
-
-                      <td>{order.shipping_fee}</td>
-                      <td>{order.shipping_address}</td>
                       <td className="text-sm font-sm"> 
-                      <small>{orderStatusMapping[order.status]}</small>
+                      <small className="text-sm">{orderStatusMapping[order.status]}</small>
                       </td>
-                      <td>{order.order_total}</td>
-                      <td>
-                        <span onClick={() => handleDeleteOrder(order.order_id)}>
-                          <FontAwesomeIcon
-                            icon={faTrashAlt}
-                            className={styles.delete__icon}
-                          />
-                        </span>
+                  
+                      <td className="flex gap-5">
+                        {/* <span className="bg bg-secondary text-sm text-white rounded mr-5" onClick={() => handleDeleteOrder(order.order_id)}>
+                        <button className="btn btn-sm text-white rounded">Details</button>
+                        </span> */}
+                        <button className="px-3 py-1 bg-outline-secondary bg-info  font-semibold rounded-full" onClick={() => handleDeleteOrder(order.order_id)}>
+                            Checkout
+                        </button>
                       </td>
                     </tr>
                   ))}
