@@ -260,42 +260,7 @@ const TopNavigation = ({ page }) => {
                         ))}
                       </ul>
                     </span>
-                    <span className={styles.category}>
-                      Currency
-                      <FontAwesomeIcon
-                        icon={faChevronDown}
-                        style={{ fontSize: "10px", margin: "0 0 0 8px" }}
-                      />
-                      <ul>
-                        {currency.map((curr) => (
-                          <div
-                            onClick={() =>
-                              dispatch(updateCountry(curr.country))
-                            }
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: 10,
-                            }}
-                            key={curr.id}
-                          >
-                            <img src={curr?.icon} alt={curr?.country} />
-                            <p style={{ textTransform: "capitalize" }}>
-                              {curr?.currency}
-                            </p>
-                            {curr.country === country && <div style={{backgroundColor: "tomato", width: 10, height: 10, borderRadius: 10}} />}
-                          </div>
-                        ))}
-                      </ul>
-                    </span>
-                    <NavLink
-                      to="/about-us"
-                      className={(navInfo) =>
-                        navInfo.isActive ? styles.active : ""
-                      }
-                    >
-                      About Us
-                    </NavLink>
+{/*                 
                     <NavLink
                       to="/contact-us"
                       className={(navInfo) =>
@@ -303,35 +268,15 @@ const TopNavigation = ({ page }) => {
                       }
                     >
                       Contact Us
-                    </NavLink>
-                    <span className={styles.dropdown}>
+                    </NavLink> */}
+                    {/* <span className={styles.dropdown}>
                       Pages
                       <FontAwesomeIcon
                         icon={faChevronDown}
                         style={{ fontSize: "10px", marginLeft: "8px" }}
                       />
                       <ul>
-                        {/* <li>
-                          <NavLink
-                            to="/offer"
-                            className={(navInfo) =>
-                              navInfo.isActive ? styles.active : ""
-                            }
-                          >
-                            <img src={offerIcon} alt="offerIcon" /> Offer
-                          </NavLink>
-                        </li> */}
-                        {/* <li>
-                          <NavLink
-                            to="/checkout"
-                            className={(navInfo) =>
-                              navInfo.isActive ? styles.active : ""
-                            }
-                          >
-                            <img src={checkoutIcon} alt="checkoutIcon" />
-                            Checkout
-                          </NavLink>
-                        </li> */}
+                       
 
                         <li>
                           <NavLink
@@ -391,12 +336,53 @@ const TopNavigation = ({ page }) => {
                           </NavLink>
                         </li>
                       </ul>
-                    </span>
+                    </span> */}
                     {/* <NavLink to='/offers' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
                       Offers
                     </NavLink> */}
 
-                    {token && (
+                    
+                  </li>
+                </ul>
+              </Col>
+              <Col lg={4} md={5} sm={12} className="p-0">
+                <ul className={styles.right__item}>
+                  
+                  <li>
+                  <span className={styles.category}>
+                         Currency
+                      <FontAwesomeIcon
+                        icon={faChevronDown}
+                        style={{ fontSize: "10px", margin: "0 0 0 8px" }}
+                      />
+                      <ul>
+                        
+                        {currency.map((curr) => (
+                          <div
+                            onClick={() =>
+                              dispatch(updateCountry(curr.country))
+                            }
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: 10,
+                            }}
+                            key={curr.id}
+                          >
+                            <img src={curr?.icon} alt={curr?.country} />
+                            <p style={{ textTransform: "capitalize" }}>
+                              {curr?.currency}
+                            </p>
+                            {curr.country === country && <div style={{backgroundColor: "tomato", width: 10, height: 10, borderRadius: 10}} />}
+                          </div>
+                        ))}
+                        
+                      </ul>
+                    </span>
+                    
+                  </li>
+                  <li>
+                  {token && (
                       <NavLink
                         to="/dashboard"
                         className={(navInfo) =>
@@ -407,27 +393,17 @@ const TopNavigation = ({ page }) => {
                       </NavLink>
                     )}
                   </li>
-                </ul>
-              </Col>
-              <Col lg={4} md={5} sm={12} className="p-0">
-                <ul className={styles.right__item}>
                   <li>
-                    <NavLink
-                      to="/privacy-policy"
-                      className={(navInfo) =>
-                        navInfo.isActive ? styles.active : ""
-                      }
-                    >
-                      Privacy Policy
-                    </NavLink>
-                    <NavLink
-                      to="/terms-and-conditions"
-                      className={(navInfo) =>
-                        navInfo.isActive ? styles.active : ""
-                      }
-                    >
-                      Terms & Conditions
-                    </NavLink>
+                  {token && (
+                      <NavLink
+                        to="/dashboard/my-orders"
+                        className={(navInfo) =>
+                          navInfo.isActive ? styles.active : ""
+                        }
+                      >
+                        My Orders
+                      </NavLink>
+                    )}
                   </li>
                 </ul>
               </Col>

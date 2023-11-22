@@ -1,5 +1,5 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import swal from "sweetalert";
@@ -7,10 +7,13 @@ import useAuth from "../../../hooks/useAuth";
 import {
   cancelOrdersAsync,
   loadOrdersAsync,
+  loadOrder,
 } from "../../../redux/feathers/ordersSlice";
 import LoadingSpinner from "../../SharedComponents/LoadingSpinner/LoadingSpinner";
 import styles from "./MyOrders.module.css";
 import moment from "moment";
+import { Col, Modal, Row } from "react-bootstrap";
+import {CheckoutCart} from "../../SharedComponents/Cart/Cart";
 
 
 export const orderStatusMapping = {
@@ -29,6 +32,11 @@ const MyOrders = () => {
 
 
   const { userProfile } = useSelector((state) => state.user);
+  const [orderDetails, setOrderDetails] = useState({});
+  const [error, setError] = useState("");
+  const [show, setShow] = useState(false);
+  const [orderItems, setOrderItems] = useState(null);
+
 
   const orders = useSelector((state) => state.orders);
   console.log("orders", orders);
@@ -50,8 +58,93 @@ const MyOrders = () => {
     });
   };
 
+  const getOrderDetails = async (orderId) => {
+    try {
+      const orderData = await loadOrder(orderId);
+      console.log("orderData", orderData);
+      setOrderDetails(orderData[0]);
+      setOrderItems(orderData[0].items)
+    } catch (error) {
+      setError(error.message || "Error loading order");
+    } finally {
+
+    }
+  };
+
+
+  const handleClose = () => setShow(false);
+
+  const handleShow = (orderId) => {
+    getOrderDetails(orderId);
+    setShow(true);
+  };
+  console.log("orderDetails",orderDetails.items)
+
   return (
     <section id={styles.my__order}>
+         <Modal
+                className="modal-content-z"
+                show={show}
+                size="lg"
+                onHide={handleClose}
+                backdrop="static"
+                centered
+              >
+                <Modal.Header closeButton>
+                  <h5>ITEMS</h5>
+                </Modal.Header>
+                <Modal.Body style={{ height: "inherit" }}>
+                {orderItems && <CheckoutCart key={orderDetails?.order_id} items={orderItems} />}
+                  <Row>
+                    <Col lg={4}>
+                      {" "}
+                      {/* <p>
+                        <span style={{ fontWeight: "bold" }}>
+                          Delivery Type:
+                        </span>{" "}
+                        {orderDetails.delivery_type === "PUP"
+                          ? "Pickup"
+                          : "Door-to-Door"}
+                      </p> */}
+                       <p>
+                        <span style={{ fontWeight: "bold" }}>
+                          Delivery Address:
+                        </span>{" "}
+                        {orderDetails?.shipping_address}
+                      </p>
+                    </Col>
+                    <Col lg={8}>
+                      <p>
+                        <span style={{ fontWeight: "bold" }}>
+                        Freight Cost:
+                        </span>{" "}
+                        ${orderDetails?.shipping_fee}
+                      </p>
+                    </Col>
+                  </Row>
+                  <Row>
+                    
+                    <Col lg={4}>
+                      {" "}
+                      <p>
+                        <span style={{ fontWeight: "bold" }}>
+                          Handling Fee:
+                        </span>{" "}
+                        ${orderDetails?.handling_fee}
+                      </p>
+                    </Col>
+                    <Col lg={4}>
+                      {" "}
+                      <p>
+                        <span style={{ fontWeight: "bold" }}>
+                          Packaging Fee:
+                        </span>{" "}
+                        ${orderDetails?.packaging_fee}
+                      </p>
+                    </Col>
+                  </Row>
+                </Modal.Body>
+        </Modal>
       <h1>My Orders</h1>
       {orders.status === "Pending" ? (
         <LoadingSpinner />
@@ -80,7 +173,7 @@ const MyOrders = () => {
             </div>
           ) : (
             <>
-              <Table bordered size="sm" responsive>
+              <Table bordered size="sm" className="border-none" responsive>
                 <thead>
                   <tr>
                     <th>#</th>
@@ -88,7 +181,10 @@ const MyOrders = () => {
 
                     <th>Status</th>
                
-                    <th>Action</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -99,20 +195,24 @@ const MyOrders = () => {
                       <td className="text-sm font-sm"> 
                       <small className="text-sm">{orderStatusMapping[order.status]}</small>
                       </td>
-                  
-                      <td className="flex gap-5">
-                        {/* <span className="bg bg-secondary text-sm text-white rounded mr-5" onClick={() => handleDeleteOrder(order.order_id)}>
-                        <button className="btn btn-sm text-white rounded">Details</button>
-                        </span> */}
-                      {order.order_reviewed === true  ? <button className="px-3 py-1 button-main rounded border-0 text-white" onClick={() => navigate(`/checkout?order_id=${order.order_id}`)}>
-                          Checkout
-                      </button>
-                    :  
-                    <button className="px-3 py-1 button-main bg-primary border-0 rounded text-white" onClick={() => navigate('/')}>
-                       View order
-                    </button>
-                    }
+                      <td>
+                      {order.order_reviewed === true  && order.status === null  &&  <button className="px-3 py-1 button-main rounded border-0 text-white" onClick={() => navigate(`/checkout?order_id=${order.order_id}`)}>
+                          Make Payment (${order.order_total})
+                      </button>}
                       </td>
+                      <td className="flex gap-5">
+                        <small className="cursor badge bg-secondary"  onClick={() => handleShow(order.order_id)}>
+                        <i className="fas fa-eye"></i> View 
+                        </small>
+                      </td>
+                      <td className="flex gap-5">
+                        {order.status === null  &&
+                        <small className="cursor badge text-dark bg-light" onClick={() => handleDeleteOrder(order.id)}>
+                        <i className="fas fa-trash"></i> Cancel 
+                        </small>}
+          
+                      </td>
+                     
                     </tr>
                   ))}
                 </tbody>

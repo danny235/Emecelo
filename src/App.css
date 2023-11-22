@@ -156,5 +156,9 @@ table tbody tr td {
 .button-main {
   background-color: #10b981;
   color: white;
+  font-size: 0.7rem;
+}
 
+.cursor{
+  cursor: pointer !important;
 }

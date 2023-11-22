@@ -9,7 +9,7 @@ import MyOrders from "./Pages/DashboardPage/MyOrders/MyOrders";
 import Profile from "./Pages/DashboardPage/Profile/Profile";
 import PreLoader from "./Pages/SharedComponents/PreLoader/PreLoader";
 import ScrollToTop from "./Pages/SharedComponents/ScrollToTop/ScrollToTop";
-import MainCheckoutPage from "./Pages/CheckOutPage/MainCheckoutPage";
+import CheckoutPage from "./Pages/CheckOutPage/CheckoutPage";
 import SearchResults from "./Pages/Search/SearchResults";
 const Home = lazy(() => import("./Pages/HomePage/Home/Home"));
 const Login = lazy(() => import("./Pages/AuthPage/LogIn/Login"));
@@ -22,7 +22,7 @@ const ContactUs = lazy(() => import("./Pages/ContactUsPage/ContactUs"));
 const Categories = lazy(() =>
   import("./Pages/CategoriesPage/Categories/Categories")
 );
-const CheckOutPage = lazy(() => import("./Pages/CheckOutPage/CheckOutPage"));
+const PlaceOrderPage = lazy(() => import("./Pages/CheckOutPage/PlaceOrderPage"));
 const NotFoundPage = lazy(() => import("./Pages/NotFoundPage/NotFoundPage"));
 const PrivacyPolicy = lazy(() =>
   import("./Pages/PrivacyPolicyPage/PrivacyPolicy")
@@ -33,7 +33,6 @@ const ResetPassword = lazy(() =>
 const TermsAndCondition = lazy(() =>
   import("./Pages/TermsAndConditionPage/TermsAndCondition")
 );
-const CheckoutMainPage = lazy(() => import("./Pages/CheckOutPage/MainCheckoutPage"));
 
 function App() {
   const { token } = useSelector((state) => state.user);
@@ -64,8 +63,8 @@ function App() {
               element={<SingleCategory />}
             />
           </Route>
-          <Route path="/place-order" element={<CheckOutPage />} />
-          <Route path="/checkout" element={<MainCheckoutPage />} />
+          <Route path="/place-order" element={<PlaceOrderPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/search" element={<SearchResults />} />
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="/dashboard" element={<Profile />} />

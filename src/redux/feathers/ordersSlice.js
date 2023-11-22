@@ -36,6 +36,19 @@ export const loadOrder = async (order_id) => {
   }
 };
 
+export const validatePayment = async (order_id, payload) => {
+  try {
+    const response = await axios.post(`${BASE_URL}payment/${order_id}/`, payload, { headers });
+    console.log("response payload", response.data)
+    return response.data;
+  } catch (error) {
+    // Handle errors if needed
+    console.log('Error loading order:', error);
+    throw error; // You can choose to handle or propagate the error as needed
+  }
+};
+
+
 
 export const postOrdersAsync = createAsyncThunk(
   'orders/postOrdersAsync',
@@ -46,21 +59,13 @@ export const postOrdersAsync = createAsyncThunk(
   }
 );
 
-
-// export const loadOrdersAsync = createAsyncThunk(
-//   'orders/loadOrdersAsync',
-//   async (payload) => {
-//     if (payload) {
-//       const response = await axios.get(
-//         `https://kacha-bazar.up.railway.app/all-orders?email=${payload}`
-//       );
-//       return response.data;
-//     } else {
-//       const response = await axios.get(`https://kacha-bazar.up.railway.app/all-orders`);
-//       return response.data;
-//     }
-//   }
-// );
+export const cancelOrdersAsync = createAsyncThunk(
+  'orders/cancelOrdersAsync',
+  async (payload) => {
+    const response = await axios.delete(`${BASE_URL}orders/${payload}`, { headers });
+    return response.data;
+  }
+);
 
 export const updateOrdersAsync = createAsyncThunk(
   'orders/updateOrdersAsync',
@@ -73,15 +78,6 @@ export const updateOrdersAsync = createAsyncThunk(
   }
 );
 
-export const cancelOrdersAsync = createAsyncThunk(
-  'orders/cancelOrdersAsync',
-  async (payload) => {
-    const response = await axios.delete(
-      `https://kacha-bazar.up.railway.app/order/${payload}`
-    );
-    return response.data;
-  }
-);
 
 export const ordersSlice = createSlice({
   name: 'orders',
