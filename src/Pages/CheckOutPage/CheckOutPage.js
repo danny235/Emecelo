@@ -99,6 +99,7 @@ const CheckOutPage = () => {
     setShow(false);
     setTimeout(() => window.location.reload(), 200);
     navigate("/dashboard/my-orders");
+    dispatch(emptyCart());
   };
 
   console.log("here data", order)
