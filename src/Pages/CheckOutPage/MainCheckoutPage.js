@@ -213,23 +213,24 @@ const MainCheckoutPage = () => {
                   </li>
                   <li>
                     <span>Shipping Cost</span>{" "}
-                    <span>${order?.shipping_cost }</span>
+                    <span>${order?.shipping_cost}.00</span>
                   </li>
                   <li>
-                    <span>Shipping Fee</span>{" "}
-                    <span>${order?.shipping_fee}</span>
+                    <small className="text-secondary">Freight Fee</small>{" "}
+                    <small className="text-secondary">${order?.shipping_fee}</small>
                   </li>
                   <li>
-                    <span>Handling Fee</span>{" "}
-                    <span>${order?.handling_fee}</span>
+                    <small className="text-secondary">Handling Fee</small>{" "}
+                    <small className="text-secondary">${order?.handling_fee}</small>
+                  </li>
+                 
+                  <li>
+                    <small className="text-secondary">Packaging Fee</small>{" "}
+                    <small className="text-secondary">${order?.packaging_fee}</small>
                   </li>
                   <li>
-                    <span>Insurance Fee</span>{" "}
-                    <span>${order?.insurance_fee}</span>
-                  </li>
-                  <li>
-                    <span>Packaging Fee</span>{" "}
-                    <span>${order?.packaging_fee}</span>
+                    <small className="text-secondary">Insurance Fee</small>{" "}
+                    <small className="text-secondary">${order?.insurance_fee}</small>
                   </li>
                   <li>
                     <span>TOTAL COST</span>{" "}
