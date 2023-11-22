@@ -104,7 +104,7 @@ const MyOrders = () => {
                         {/* <span className="bg bg-secondary text-sm text-white rounded mr-5" onClick={() => handleDeleteOrder(order.order_id)}>
                         <button className="btn btn-sm text-white rounded">Details</button>
                         </span> */}
-                      {order.status === null  ? <button className="px-3 py-1 button-main rounded border-0 text-white" onClick={() => navigate('/checkout')}>
+                      {order.status === null  ? <button className="px-3 py-1 button-main rounded border-0 text-white" onClick={() => navigate(`/checkout?order_id=${order.order_id}`)}>
                           Checkout
                       </button>
                     :  

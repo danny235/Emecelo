@@ -25,6 +25,18 @@ export const loadOrdersAsync = createAsyncThunk(
   }
 );
 
+export const loadOrder = async (order_id) => {
+  try {
+    const response = await axios.get(`${BASE_URL}orders/?order_id=${order_id}`, { headers });
+    return response.data;
+  } catch (error) {
+    // Handle errors if needed
+    console.log('Error loading order:', error);
+    throw error; // You can choose to handle or propagate the error as needed
+  }
+};
+
+
 export const postOrdersAsync = createAsyncThunk(
   'orders/postOrdersAsync',
   async (payload) => {    
