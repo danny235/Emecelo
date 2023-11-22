@@ -2,7 +2,6 @@ import axios from "axios";
 // export const BASE_URL = "http://127.0.0.1:8000/api/";
 export const BASE_URL = "https://emecelo.onrender.com/api/";
 
-
 export const LOGIN_USER = async (email, password) => {
   try {
     const response = await axios.post(`${BASE_URL}login/`, {
