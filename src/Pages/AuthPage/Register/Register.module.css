@@ -114,7 +114,7 @@
 
 #register .inputs label {
   position: absolute;
-  top: 35%;
+  top: 28px;
   left: 20px;
   transform: translateY(-50%);
   border: 0;

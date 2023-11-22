@@ -321,16 +321,21 @@
   width: 300px;
   transition: all linear 0.3s;
   z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .category ul a {
   line-height: 45px;
   margin: 0;
-  display: block;
   display: flex;
-  align-self: center;
+  
   align-items: center;
+  gap: 10px;
 }
+
+
 
 .category:hover.category ul {
   visibility: visible;

@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "../Pages/AuthPage/LogIn/Login.module.css";
 
-const CustomInput = ({ label, formikProps, formikKey, onChangeText, ...rest }) => {
+const CustomInput = ({ children, formikProps, formikKey, onChangeText, ...rest }) => {
   const inputStyles = {};
 
   if (formikProps.touched[formikKey] && formikProps.errors[formikKey]) {
@@ -10,7 +10,7 @@ const CustomInput = ({ label, formikProps, formikKey, onChangeText, ...rest }) =
   }
 
   return (
-  
+    <FieldWrapper formikKey={formikKey} formikProps={formikProps} >
       <input
         onChange={formikProps.handleChange(formikKey)}
         onBlur={formikProps.handleBlur(formikKey)}
@@ -18,23 +18,23 @@ const CustomInput = ({ label, formikProps, formikKey, onChangeText, ...rest }) =
         {...rest}
         
       />
-
+</FieldWrapper>
   );
 };
-const FieldWrapper = ({ children, label, formikProps, formikKey }) => {
+const FieldWrapper = ({ children, formikProps, formikKey }) => {
 
 
 //   if (formikProps.touched[formikKey] && formikProps.errors[formikKey]) {
 //     labelStyles.color = Colors.ashShade;
 //   }
   return (
-    <span className={styles.inputs}>
-      <label style={{marginBottom: 10}}>{label}</label>
+    <div >
+      
       {children}
-      <p style={styles.error}>
+      <p style={{color: "red", marginBottom: 10}}>
         {formikProps.touched[formikKey] && formikProps.errors[formikKey]}
       </p>
-    </span>
+    </div>
   );
 };
 

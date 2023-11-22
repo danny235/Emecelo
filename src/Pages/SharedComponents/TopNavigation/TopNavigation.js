@@ -2,16 +2,14 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Col, Container, Offcanvas, Row } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { NavLink, useNavigate, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import aboutUsIcon from "../../../assets/images/aboutUs.svg";
 import cartIcon from "../../../assets/images/cart.svg";
 import cooking from "../../../assets/images/categories/Cooking.webp";
-import checkoutIcon from "../../../assets/images/checkout.svg";
 import contactUsIcon from "../../../assets/images/contactUs.svg";
-import errorIcon from "../../../assets/images/error.svg";
 import faqIcon from "../../../assets/images/faq.svg";
-import offerIcon from "../../../assets/images/gift.svg";
+import offerIcon from "../../../assets/images/checkout.svg";
 import menuBarIcon from "../../../assets/images/menuBar.svg";
 import notifyIcon from "../../../assets/images/notifyIcon.svg";
 import privacyIcon from "../../../assets/images/privacy.svg";
@@ -20,11 +18,12 @@ import termsIcon from "../../../assets/images/terms.svg";
 import userIcon from "../../../assets/images/user.svg";
 import { addCommas } from "../../../fuctions";
 import useRedux from "../../../hooks/useRedux";
+import { updateCountry } from "../../../redux/user/userSlice";
 import Cart from "../Cart/Cart";
 import ProfileDetails from "../ProfileDetails/ProfileDetails";
 import styles from "./TopNavigation.module.css";
 
-const TopNavigation = ({page}) => {
+const TopNavigation = ({ page }) => {
   const [menuShow, setMenuShow] = useState(false);
   const navigate = useNavigate();
   const { token } = useSelector((state) => state.user);
@@ -33,7 +32,22 @@ const TopNavigation = ({page}) => {
   const loggedInUser = useSelector((state) => state.user.isLoggedIn);
   const { country } = useSelector((state) => state.user);
   const { categories } = useSelector((state) => state.products);
-  const [searchText, setSearchText] = useState("")
+  const [searchText, setSearchText] = useState("");
+  const dispatch = useDispatch();
+  const currency = [
+    {
+      id: 1,
+      currency: "NGN",
+      country: "Nigeria",
+      icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_Nigeria.svg/2000px-Flag_of_Nigeria.svg.png",
+    },
+    {
+      id: 2,
+      currency: "USD",
+      country: "USA",
+      icon: "https://cdn.britannica.com/33/4833-004-828A9A84/Flag-United-States-of-America.jpg",
+    },
+  ];
 
   let total = 0;
   for (const pd of cart) {
@@ -46,7 +60,6 @@ const TopNavigation = ({page}) => {
       totalPrice +
       Number(country === "Nigeria" ? pd.totalNairaPrice : pd.totalPrice);
   }
-  
 
   const handleMenuShow = () => setMenuShow(true);
   const location = useLocation();
@@ -54,10 +67,10 @@ const TopNavigation = ({page}) => {
 
   const handleButtonClick = () => {
     const searchParams = new URLSearchParams();
-    searchParams.set('results', searchText);
+    searchParams.set("results", searchText);
 
     // Check if the current location is already /search
-    if (location.pathname === '/search/') {
+    if (location.pathname === "/search/") {
       // Update search parameters without full navigation
       navigate({ search: `?${searchParams.toString()}` });
     } else {
@@ -95,12 +108,12 @@ const TopNavigation = ({page}) => {
                   autoComplete="off"
                   spellCheck="false"
                   value={searchText}
-                  onChange={(e)=> {
+                  onChange={(e) => {
                     e.preventDefault();
                     setSearchText(e.target.value);
                   }}
                 />
-                <button onClick={()=>handleButtonClick()} type="submit">
+                <button onClick={() => handleButtonClick()} type="submit">
                   <img src={searchIcon} alt="searchIcon" />
                 </button>
               </form>
@@ -240,12 +253,38 @@ const TopNavigation = ({page}) => {
                               src={category?.icon ? category?.icon : cooking}
                               alt={category?.title}
                             />
-                            <p style={{textTransform: "capitalize"}}>
-
-                            {category?.title}
+                            <p style={{ textTransform: "capitalize" }}>
+                              {category?.title}
                             </p>
-
                           </NavLink>
+                        ))}
+                      </ul>
+                    </span>
+                    <span className={styles.category}>
+                      Currency
+                      <FontAwesomeIcon
+                        icon={faChevronDown}
+                        style={{ fontSize: "10px", margin: "0 0 0 8px" }}
+                      />
+                      <ul>
+                        {currency.map((curr) => (
+                          <div
+                            onClick={() =>
+                              dispatch(updateCountry(curr.country))
+                            }
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: 10,
+                            }}
+                            key={curr.id}
+                          >
+                            <img src={curr?.icon} alt={curr?.country} />
+                            <p style={{ textTransform: "capitalize" }}>
+                              {curr?.currency}
+                            </p>
+                            {curr.country === country && <div style={{backgroundColor: "tomato", width: 10, height: 10, borderRadius: 10}} />}
+                          </div>
                         ))}
                       </ul>
                     </span>
@@ -351,8 +390,6 @@ const TopNavigation = ({page}) => {
                             Terms & Conditions
                           </NavLink>
                         </li>
-
-                        
                       </ul>
                     </span>
                     {/* <NavLink to='/offers' className={(navInfo) => (navInfo.isActive ? styles.active : '')}>
@@ -562,6 +599,34 @@ const TopNavigation = ({page}) => {
                       <img src={faqIcon} alt="faqIcon" /> FAQ
                     </NavLink>
                   </li> */}
+
+                  <span className={styles.category}>
+                  <img src={offerIcon} alt="offerIcon" />
+                    Currency
+                    <FontAwesomeIcon
+                      icon={faChevronDown}
+                      style={{ fontSize: "10px", margin: "0 0 0 8px" }}
+                    />
+                    <ul>
+                      {currency.map((curr) => (
+                        <div
+                          onClick={() => dispatch(updateCountry(curr.country))}
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 10,
+                          }}
+                          key={curr.id}
+                        >
+                          <img src={curr?.icon} alt={curr?.country} />
+                          <p style={{ textTransform: "capitalize" }}>
+                            {curr?.currency}
+                          </p>
+                          {curr.country === country && <div style={{backgroundColor: "tomato", width: 10, height: 10, borderRadius: 10}} />}
+                        </div>
+                      ))}
+                    </ul>
+                  </span>
 
                   <li>
                     <NavLink

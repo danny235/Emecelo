@@ -32,6 +32,13 @@ const registerSchema = yup.object().shape({
     .required()
     .label("Password")
     .min(8, "Seems a bit short"),
+    confirmPassword: yup
+    .string()
+    .required()
+    .label("Confirm Password")
+    .test("passwords-match", "Passwords must match", function (value) {
+      return this.parent.newPassword === value;
+    }),
 });
 
 const Register = () => {
@@ -108,6 +115,7 @@ const Register = () => {
               lastName: "",
               email: "",
               password: "",
+              confirmPassword: "",
             }}
             onSubmit={(values, actions) => {
               // console.log(values.email, values.password);
@@ -186,7 +194,24 @@ const Register = () => {
                     placeholder="Enter Your Secret Password"
                     required
                   />
-                  <label htmlFor="password1">
+                  <label htmlFor="password">
+                    <img src={passwordIcon} alt="passwordIcon" />
+                  </label>
+                </span>
+                <span className={styles.inputs}>
+                  <CustomInput
+                    formikProps={formikProps}
+                    formikKey="confirmPassword"
+                    value={formikProps.values.confirmPassword}
+                    type="password"
+                    name="confirmPassword"
+                    id="confirmPassword"
+                    autoComplete="off"
+                    spellCheck="false"
+                    placeholder="Confirm Your Secret Password"
+                    required
+                  />
+                  <label htmlFor="confirmPassword">
                     <img src={passwordIcon} alt="passwordIcon" />
                   </label>
                 </span>

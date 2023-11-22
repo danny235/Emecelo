@@ -17,7 +17,7 @@ const initialState = {
   token: "",
   isLoggedIn: false,
   userProfile: {},
-  country: '',
+  country: 'USA',
     status: 'idle', // 'idle', 'loading', 'succeeded', 'failed'
     error: null,
 };
@@ -40,25 +40,14 @@ export const userSlice = createSlice({
       state.isLoggedIn = false
       state.token = ""
     },
-    
+    updateCountry: (state, action) => {
+      state.country = action.payload
+    }
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchUserCountry.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(fetchUserCountry.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.country = action.payload;
-      })
-      .addCase(fetchUserCountry.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message;
-      });
-  },
+ 
 });
 
 // Action creators are generated for each case reducer function
-export const { updateToken, updateIsLoggedIn,  updateUserProfile, logoutUser} = userSlice.actions;
+export const { updateToken, updateIsLoggedIn,  updateUserProfile, logoutUser, updateCountry} = userSlice.actions;
 
 export default userSlice.reducer;
