@@ -8,20 +8,53 @@ import {
   cancelOrdersAsync,
   loadOrdersAsync,
   loadOrder,
+  ordersCount,
 } from "../../../redux/feathers/ordersSlice";
 import LoadingSpinner from "../../SharedComponents/LoadingSpinner/LoadingSpinner";
 import styles from "./MyOrders.module.css";
 import moment from "moment";
 import { Col, Modal, Row } from "react-bootstrap";
-import {CheckoutCart} from "../../SharedComponents/Cart/Cart";
-
+import { CheckoutCart } from "../../SharedComponents/Cart/Cart";
+import {
+  FiCheck,
+  FiFileText,
+  FiGrid,
+  FiList,
+  FiRefreshCw,
+  FiSettings,
+  FiShoppingCart,
+  FiTruck,
+} from "react-icons/fi";
+import "./styles.scss";
 
 export const orderStatusMapping = {
   null: "Awaiting confirmation",
   1: "Order opened",
   3: "Order processed",
+  4: "Order Refunded",
   5: "Order delivered",
-  6: "Order refunded",
+};
+
+const Card = ({ title, Icon, quantity, className }) => {
+  return (
+    <div className="flex h-full">
+      <div className="flex items-center border border-gray-200 w-full rounded-lg p-4">
+        <div
+          className={`flex items-center justify-center p-3 rounded-full h-12 w-12 text-xl text-center mr-4 ${className}`}
+        >
+          <Icon />
+        </div>
+        <div>
+          <h5 className="leading-none mb-2 text-base font-medium font-serif text-gray-700">
+            {title}
+          </h5>
+          <p className="text-xl font-bold font-serif leading-none text-gray-800">
+            {quantity}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 const MyOrders = () => {
@@ -30,13 +63,17 @@ const MyOrders = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
   const { userProfile } = useSelector((state) => state.user);
   const [orderDetails, setOrderDetails] = useState({});
   const [error, setError] = useState("");
   const [show, setShow] = useState(false);
   const [orderItems, setOrderItems] = useState(null);
-
+  const [orderDataCount, setOrderDataCount] = useState({
+    total: 0,
+    processed: 0,
+    pending: 0,
+    completed: 0,
+  });
 
   const orders = useSelector((state) => state.orders);
   console.log("orders", orders);
@@ -63,42 +100,61 @@ const MyOrders = () => {
       const orderData = await loadOrder(orderId);
       console.log("orderData", orderData);
       setOrderDetails(orderData[0]);
-      setOrderItems(orderData[0].items)
+      setOrderItems(orderData[0].items);
     } catch (error) {
       setError(error.message || "Error loading order");
     } finally {
-
     }
   };
 
 
   const handleClose = () => setShow(false);
 
+  useEffect(() => {
+    const getOrdersCount = async () => {
+      try {
+        const data = await ordersCount();
+        // console.log("ordersCount", data);
+        setOrderDataCount(data);
+      } catch (error) {
+        setError(error.message || "Error loading order");
+      } finally {
+        // Any cleanup or additional logic can go here
+      }
+    };
+
+    // Call the function
+    getOrdersCount();
+  }, []); // The empty dependency array ensures that the effect runs only once
+
+
   const handleShow = (orderId) => {
     getOrderDetails(orderId);
     setShow(true);
   };
-  console.log("orderDetails",orderDetails.items)
+  console.log("orderDataCount", orderDataCount);
 
   return (
     <section id={styles.my__order}>
-         <Modal
-                className="modal-content-z"
-                show={show}
-                size="lg"
-                onHide={handleClose}
-                backdrop="static"
-                centered
-              >
-                <Modal.Header closeButton>
-                  <h5>ITEMS</h5>
-                </Modal.Header>
-                <Modal.Body style={{ height: "inherit" }}>
-                {orderItems && <CheckoutCart key={orderDetails?.order_id} items={orderItems} />}
-                  <Row>
-                    <Col lg={4}>
-                      {" "}
-                      {/* <p>
+      <Modal
+        className="modal-content-z"
+        show={show}
+        size="lg"
+        onHide={handleClose}
+        backdrop="static"
+        centered
+      >
+        <Modal.Header closeButton>
+          <h5>ITEMS</h5>
+        </Modal.Header>
+        <Modal.Body style={{ height: "inherit" }}>
+          {orderItems && (
+            <CheckoutCart key={orderDetails?.order_id} items={orderItems} />
+          )}
+          <Row>
+            <Col lg={4}>
+              {" "}
+              {/* <p>
                         <span style={{ fontWeight: "bold" }}>
                           Delivery Type:
                         </span>{" "}
@@ -106,46 +162,64 @@ const MyOrders = () => {
                           ? "Pickup"
                           : "Door-to-Door"}
                       </p> */}
-                       <p>
-                        <span style={{ fontWeight: "bold" }}>
-                          Delivery Address:
-                        </span>{" "}
-                        {orderDetails?.shipping_address}
-                      </p>
-                    </Col>
-                    <Col lg={8}>
-                      <p>
-                        <span style={{ fontWeight: "bold" }}>
-                        Freight Cost:
-                        </span>{" "}
-                        ${orderDetails?.shipping_fee}
-                      </p>
-                    </Col>
-                  </Row>
-                  <Row>
-                    
-                    <Col lg={4}>
-                      {" "}
-                      <p>
-                        <span style={{ fontWeight: "bold" }}>
-                          Handling Fee:
-                        </span>{" "}
-                        ${orderDetails?.handling_fee}
-                      </p>
-                    </Col>
-                    <Col lg={4}>
-                      {" "}
-                      <p>
-                        <span style={{ fontWeight: "bold" }}>
-                          Packaging Fee:
-                        </span>{" "}
-                        ${orderDetails?.packaging_fee}
-                      </p>
-                    </Col>
-                  </Row>
-                </Modal.Body>
-        </Modal>
-      <h1>My Orders</h1>
+              <p>
+                <span style={{ fontWeight: "bold" }}>Delivery Address:</span>{" "}
+                {orderDetails?.shipping_address}
+              </p>
+            </Col>
+            <Col lg={8}>
+              <p>
+                <span style={{ fontWeight: "bold" }}>Freight Cost:</span> $
+                {orderDetails?.shipping_fee}
+              </p>
+            </Col>
+          </Row>
+          <Row>
+            <Col lg={4}>
+              {" "}
+              <p>
+                <span style={{ fontWeight: "bold" }}>Handling Fee:</span> $
+                {orderDetails?.handling_fee}
+              </p>
+            </Col>
+            <Col lg={4}>
+              {" "}
+              <p>
+                <span style={{ fontWeight: "bold" }}>Packaging Fee:</span> $
+                {orderDetails?.packaging_fee}
+              </p>
+            </Col>
+          </Row>
+        </Modal.Body>
+      </Modal>
+      <h1 className="font-bold mb-3">My Orders</h1>
+      <div className="grid gap-4 mb-8 md:grid-cols-2 xl:grid-cols-4">
+        <Card
+          title={"Total Orders"}
+          Icon={FiShoppingCart}
+          quantity={orderDataCount.total}
+          className="text-red-600  bg-red-200"
+        />
+        <Card
+          title={"Pending Orders"}
+          Icon={FiRefreshCw}
+          quantity={orderDataCount.pending}
+          className="text-orange-600 bg-orange-200"
+        />
+        <Card
+          title={"Processing Order"}
+          Icon={FiTruck}
+          quantity={orderDataCount.processed}
+          className="text-indigo-600 bg-indigo-200"
+        />
+        <Card
+          title={"Complete Orders"}
+          Icon={FiCheck}
+          quantity={orderDataCount.completed}
+          className="text-emerald-600 bg-emerald-200"
+        />
+      </div>
+
       {orders.status === "Pending" ? (
         <LoadingSpinner />
       ) : (
@@ -180,9 +254,7 @@ const MyOrders = () => {
                     <th>Order ID</th>
 
                     <th>Status</th>
-               
-                    <th></th>
-                    <th></th>
+
                     <th></th>
                     <th></th>
                   </tr>
@@ -192,25 +264,40 @@ const MyOrders = () => {
                     <tr key={order.order_id}>
                       <td className="fw-bold">{idx + 1}</td>
                       <td>{order.order_id}</td>
-                      <td className="text-sm font-sm"> 
-                      <small className="text-sm">{orderStatusMapping[order.status]}</small>
-                      </td>
-                      <td>
-                      {order.order_reviewed === true  && order.status === null  &&  <button className="px-3 py-1 button-main rounded border-0 text-white" onClick={() => navigate(`/checkout?order_id=${order.order_id}`)}>
-                          Make Payment (${order.order_total})
-                      </button>}
-                      </td>
-                      <td className="flex gap-5">
-                        <small className="cursor badge bg-secondary"  onClick={() => handleShow(order.order_id)}>
-                        <i className="fas fa-eye"></i> View 
+                      <td className="text-sm font-sm">
+                        <small className={`text-sm status-${order.status}`}>
+                          {orderStatusMapping[order.status]}
                         </small>
                       </td>
-                      <td className="flex gap-5">
-                        {order.status === null  &&
-                        <small className="cursor badge text-dark bg-light" onClick={() => handleDeleteOrder(order.id)}>
-                        <i className="fas fa-trash"></i> Cancel 
-                        </small>}
-          
+                      
+                      <td className="flex gap-2">
+                        <small
+                          className="ml-5 cursor badge bg-secondary"
+                          onClick={() => handleShow(order.order_id)}
+                        >
+                          <i className="fas fa-eye"></i> View
+                        </small>
+                        {order.status === null && (
+                          <small
+                            className="cursor badge text-dark bg-light"
+                            onClick={() => handleDeleteOrder(order.id)}
+                          >
+                            <i className="fas fa-trash"></i> Cancel
+                          </small>
+                        )}
+                      </td>
+                      <td>
+                        {order.order_reviewed === true &&
+                          order.status === null && (
+                            <button
+                              className="px-3 py-1 button-main rounded border-0 text-white"
+                              onClick={() =>
+                                navigate(`/checkout?order_id=${order.order_id}`)
+                              }
+                            >
+                              Make Payment (${order.order_total})
+                            </button>
+                          )}
                       </td>
                      
                     </tr>

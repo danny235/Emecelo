@@ -17,6 +17,18 @@ const headers = {
 };
 
 
+export const ordersCount = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}shopper-orders/count/`, { headers });
+    return response.data;
+  } catch (error) {
+    // Handle errors if needed
+    console.log('Error loading order:', error);
+    throw error; // You can choose to handle or propagate the error as needed
+  }
+};
+
+
 export const loadOrdersAsync = createAsyncThunk(
   'orders/loadOrdersAsync',
   async () => {

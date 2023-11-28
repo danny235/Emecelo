@@ -384,7 +384,7 @@ const TopNavigation = ({ page }) => {
                   <li>
                   {token && (
                       <NavLink
-                        to="/dashboard"
+                        to="/dashboard/my-orders"
                         className={(navInfo) =>
                           navInfo.isActive ? styles.active : ""
                         }
@@ -393,18 +393,7 @@ const TopNavigation = ({ page }) => {
                       </NavLink>
                     )}
                   </li>
-                  <li>
-                  {token && (
-                      <NavLink
-                        to="/dashboard/my-orders"
-                        className={(navInfo) =>
-                          navInfo.isActive ? styles.active : ""
-                        }
-                      >
-                        My Orders
-                      </NavLink>
-                    )}
-                  </li>
+                 
                 </ul>
               </Col>
             </Row>
