@@ -9,7 +9,7 @@ import MyOrders from "./Pages/DashboardPage/MyOrders/MyOrders";
 import Profile from "./Pages/DashboardPage/Profile/Profile";
 import PreLoader from "./Pages/SharedComponents/PreLoader/PreLoader";
 import ScrollToTop from "./Pages/SharedComponents/ScrollToTop/ScrollToTop";
-import CheckoutPage from "./Pages/CheckOutPage/CheckoutPage";
+// import CheckoutPage from "./Pages/CheckOutPage/CheckoutPage";
 import SearchResults from "./Pages/Search/SearchResults";
 const Home = lazy(() => import("./Pages/HomePage/Home/Home"));
 const Login = lazy(() => import("./Pages/AuthPage/LogIn/Login"));
@@ -23,6 +23,8 @@ const Categories = lazy(() =>
   import("./Pages/CategoriesPage/Categories/Categories")
 );
 const PlaceOrderPage = lazy(() => import("./Pages/CheckOutPage/PlaceOrderPage"));
+const  CheckoutPage = lazy(() => import("./Pages/CheckOutPage/MainCheckOutPage"));
+
 const NotFoundPage = lazy(() => import("./Pages/NotFoundPage/NotFoundPage"));
 const PrivacyPolicy = lazy(() =>
   import("./Pages/PrivacyPolicyPage/PrivacyPolicy")
