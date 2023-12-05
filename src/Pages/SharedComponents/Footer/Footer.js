@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import footerLogo from '../../../assets/images/footerLogo.svg';
+import Logo from '../../../assets/images/Emcelo.png';
 import paymentLogo from '../../../assets/images/payment-logo.webp';
 import styles from './Footer.module.css';
 
@@ -14,7 +14,7 @@ const Footer = () => {
         <Container>
           <Row>
             <Col lg={6} md={12} className={styles.logo}>
-            <h2 style={{color: "#10B981"}}>Emecelo</h2>
+            <img src={Logo} alt="Emecelo" />
               <p>
                 There are many popular products you will find our shop, Choose your daily necessary product from our Emecelo shop and get some special offer.
               </p>

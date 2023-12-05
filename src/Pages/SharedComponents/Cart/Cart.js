@@ -35,7 +35,7 @@ const Cart = ({ pd: { item, quantity, totalPrice, totalNairaPrice } }) => {
         </span>
       </div>
       <div className={styles.counter}>
-        <span onClick={() => {country === "Nigeria" ? dispatch(handleNairaDecrease(item.id)) : dispatch(handleDecrease(item.id))}}>
+        <span onClick={() => {dispatch(handleNairaDecrease(item.id)); dispatch(handleDecrease(item.id))}}>
           <FontAwesomeIcon icon={faMinus} />
         </span>
         <span>{quantity}</span>

@@ -22,6 +22,8 @@ import { updateCountry } from "../../../redux/user/userSlice";
 import Cart from "../Cart/Cart";
 import ProfileDetails from "../ProfileDetails/ProfileDetails";
 import styles from "./TopNavigation.module.css";
+import Logo from '../../../assets/images/Emelo_main.png';
+import Logo2 from '../../../assets/images/Emcelo.png';
 
 const TopNavigation = ({ page }) => {
   const [menuShow, setMenuShow] = useState(false);
@@ -91,10 +93,10 @@ const TopNavigation = ({ page }) => {
     <>
       <header id={styles.header__top}>
         <Container>
-          <Row>
+          <Row style={{display: "flex", alignItems: "center"}}>
             <Col lg={2} md={2} className="d-flex align-self-center">
               <NavLink to="/" className={styles.logo}>
-                <h6 style={{ color: "#ffffff" }}>Emecelo</h6>
+                <img src={Logo} alt="Emecelo" />
               </NavLink>
             </Col>
             <Col lg={7} md={7} sm={12} xs={12}>
@@ -514,7 +516,7 @@ const TopNavigation = ({ page }) => {
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title>
                   <NavLink to="/" onClick={handleMenuClose}>
-                    <h2 style={{ color: "#10B981" }}>Emecelo</h2>
+                    <img style={{height: 40}} src={Logo2} alt="Emecelo" />
                   </NavLink>
                 </Offcanvas.Title>
               </Offcanvas.Header>
