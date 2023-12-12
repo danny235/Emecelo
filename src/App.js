@@ -46,7 +46,7 @@ function App() {
   reverseOrder={false} />
       <Suspense fallback={<PreLoader />}>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
