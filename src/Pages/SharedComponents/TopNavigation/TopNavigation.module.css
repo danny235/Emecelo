@@ -1,6 +1,6 @@
 #header__top {
   background-color: #10b981;
-  padding:  0;
+  padding:  20px;
 }
 
 #header__top form {
@@ -154,7 +154,7 @@
 }
 
 .logo img {
-  height: 150px;
+  aspect-ratio: 1 / .26;
 }
 
 .nav__items {

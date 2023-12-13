@@ -1,8 +1,8 @@
-### [Kacha Bazar](https://kacha--bazar.web.app/)
+### [Emcelo](https://emcelo.com)
 
 ###
 
-<img src='https://i.ibb.co/7yrmd8r/kacha-bazar.png' alt='demo image' />
+<img src='https://res.cloudinary.com/dxnoztssb/image/upload/v1702451807/Screenshot_2023-12-13_at_08.13.25_rgua4y.png' alt='demo image' />
 
 ### `Some Description`
 
@@ -30,13 +30,11 @@
 
 ### `Live Site`
 
-https://kacha--bazar.web.app/
+https://emcelo.com/
 
 ---
 
-### `API Link`
 
-https://kacha-bazar.up.railway.app/
 
 ---
 
@@ -71,6 +69,6 @@ https://kacha-bazar.up.railway.app/
 - [x] GITHUB
 - [x] dotenv
 
-You can see Server side code in [Kacha Bazar Server](https://github.com/farhan-nahid/kacha-bazar-server)
+
 
 ## _Thank You So Much_.
