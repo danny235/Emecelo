@@ -11,8 +11,8 @@ const DailyNeeds = () => {
       <Container>
         <Row>
           <Col lg={6} md={6} className={styles.daily__needs__content}>
-            <h5>Get Your Daily Needs From Our Emecelo Store</h5>
-            <p>There are many products you will find our shop, Choose your daily necessary product from our Emecelo shop and get some special offer.</p>
+            <h5>Get Your Daily Needs From Our Emcelo Store</h5>
+            <p>There are many products you will find our shop, Choose your daily necessary product from our Emcelo shop and get some special offer.</p>
             {/* <span>
               <img src={appStore} alt='appStore' />
               <img src={playStore} alt='playStore' />

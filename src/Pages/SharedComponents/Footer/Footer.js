@@ -14,9 +14,9 @@ const Footer = () => {
         <Container>
           <Row>
             <Col lg={6} md={12} className={styles.logo}>
-            <img src={Logo} alt="Emecelo" />
+            <img src={Logo} alt="Emcelo" />
               <p>
-                There are many popular products you will find our shop, Choose your daily necessary product from our Emecelo shop and get some special offer.
+                There are many popular products you will find our shop, Choose your daily necessary product from our Emcelo shop and get some special offer.
               </p>
               <h6>Follow Us</h6>
               <ul className={styles.social__link}>
@@ -119,7 +119,7 @@ const Footer = () => {
         <small>
           Copyright 2023 @
           <a href='#' target='_blank' rel='noopener noreferrer' className='mx-1'>
-            Emecelo
+            Emcelo
           </a>
           , All rights reserved.
         </small>

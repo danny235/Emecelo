@@ -96,7 +96,7 @@ const TopNavigation = ({ page }) => {
           <Row style={{display: "flex", alignItems: "center"}}>
             <Col lg={2} md={2} className="d-flex align-self-center">
               <NavLink to="/" className={styles.logo}>
-                <img src={Logo} alt="Emecelo" />
+                <img src={Logo} alt="Emcelo" />
               </NavLink>
             </Col>
             <Col lg={7} md={7} sm={12} xs={12}>
@@ -516,7 +516,7 @@ const TopNavigation = ({ page }) => {
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title>
                   <NavLink to="/" onClick={handleMenuClose}>
-                    <img style={{height: 40}} src={Logo2} alt="Emecelo" />
+                    <img style={{height: 40}} src={Logo2} alt="Emcelo" />
                   </NavLink>
                 </Offcanvas.Title>
               </Offcanvas.Header>

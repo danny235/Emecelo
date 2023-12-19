@@ -23,7 +23,7 @@ const Categories = () => {
   );
 
   useEffect(() => {
-    document.title = "All Categories | Emecelo";
+    document.title = "All Categories | Emcelo";
     window.scrollTo({
       top: 0,
     });
