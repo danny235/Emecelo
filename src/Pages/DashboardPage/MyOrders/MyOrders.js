@@ -145,10 +145,14 @@ const MyOrders = () => {
         backdrop="static"
         centered
       >
-        <Modal.Header closeButton>
-          <h5>ITEMS</h5>
-        </Modal.Header>
+       
+       <div className="p-2" style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div >ITEMS</div>
+          <div onClick={handleClose} className="mr-1"><i class="fa fa-2x fa-window-close"></i></div>
+        </div>
+        <hr/>
         <Modal.Body style={{ height: "inherit" }}>
+       
           {orderItems && (
             <CheckoutCart key={orderDetails?.order_id} items={orderItems} />
           )}
