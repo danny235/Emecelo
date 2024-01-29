@@ -193,7 +193,7 @@ const MyOrders = () => {
         </Modal.Body>
       </Modal>
       <h1 className="font-bold mb-3">My Orders</h1>
-      <div className="flex gap-4 mb-8 md:grid-cols-2 xl:grid-cols-4">
+      <div className="d-flex gap-4 mb-8 md:grid-cols-2 xl:grid-cols-4">
         <Card
           title={"Total Orders"}
           Icon={FiShoppingCart}
