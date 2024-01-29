@@ -193,30 +193,30 @@ const MyOrders = () => {
         </Modal.Body>
       </Modal>
       <h1 className="font-bold mb-3">My Orders</h1>
-      <div className="grid gap-4 mb-8 md:grid-cols-2 xl:grid-cols-4">
+      <div className="flex gap-4 mb-8 md:grid-cols-2 xl:grid-cols-4">
         <Card
           title={"Total Orders"}
           Icon={FiShoppingCart}
           quantity={orderDataCount.total}
-          className="text-red-600  bg-red-200"
+          className="text-danger border-2"
         />
         <Card
           title={"Pending Orders"}
           Icon={FiRefreshCw}
           quantity={orderDataCount.pending}
-          className="text-orange-600 bg-orange-200"
+          className="text-orange border-2"
         />
         <Card
           title={"Processing Order"}
           Icon={FiTruck}
           quantity={orderDataCount.processed}
-          className="text-indigo-600 bg-indigo-200"
+          className="text-primary border-2"
         />
         <Card
           title={"Complete Orders"}
           Icon={FiCheck}
           quantity={orderDataCount.completed}
-          className="text-emerald-600 bg-emerald-200"
+          className="text-secondary border-2"
         />
       </div>
 
