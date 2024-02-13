@@ -3,11 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import Logo from '../../../assets/images/Emcelo.png';
+import Logo from '../../../assets/images/logo.jpeg';
 import paymentLogo from '../../../assets/images/payment-logo.webp';
 import styles from './Footer.module.css';
+import { useDispatch, useSelector } from "react-redux";
 
 const Footer = () => {
+  const { categories } = useSelector((state) => state.products);
+
   return (
     <>
       <footer className={styles.footer}>
@@ -21,35 +24,23 @@ const Footer = () => {
               <h6>Follow Us</h6>
               <ul className={styles.social__link}>
                 <li>
-                  <a href='https://www.facebook.com/dev.farhanNahid' target='_blank' rel='noopener noreferrer'>
+                  <a href='https://www.facebook.com/profile.php?id=61556167539112&mibextid=2JQ9oc' target='_blank' rel='noopener noreferrer'>
                     <FontAwesomeIcon icon={faFacebook} />
                   </a>
                 </li>
                 <li>
-                  <a href='https://twitter.com/farhan__nahid' target='_blank' rel='noopener noreferrer'>
-                    <FontAwesomeIcon icon={faTwitter} />
-                  </a>
+                  <a href='https://x.com/emcelo?t=rbjOleb8_HC8s9tRzYyb0g&s=09' target='_blank' rel='noopener noreferrer'>
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0 0 30 30">
+                    <path d="M26.37,26l-8.795-12.822l0.015,0.012L25.52,4h-2.65l-6.46,7.48L11.28,4H4.33l8.211,11.971L12.54,15.97L3.88,26h2.65 l7.182-8.322L19.42,26H26.37z M10.23,6l12.34,18h-2.1L8.12,6H10.23z"></path>
+                    </svg>
+                    </a>
                 </li>
                 <li>
-                  <a href='#' target='_blank' rel='noopener noreferrer'>
+                  <a href='https://www.instagram.com/_emcelo?igsh=MWc3a3NnOG84MDg5Zg==' target='_blank' rel='noopener noreferrer'>
                     <FontAwesomeIcon icon={faInstagram} />
                   </a>
                 </li>
-                <li>
-                  <a href='#' target='_blank' rel='noopener noreferrer'>
-                    <FontAwesomeIcon icon={faLinkedin} />
-                  </a>
-                </li>
-                <li>
-                  <a href='#'>
-                    <FontAwesomeIcon icon={faWhatsapp} />
-                  </a>
-                </li>
-                <li>
-                  <a href='#' target='_blank' rel='noopener noreferrer'>
-                    <FontAwesomeIcon icon={faGithub} />
-                  </a>
-                </li>
+            
               </ul>
             </Col>
             <Col lg={2} md={4} sm={6} xs={6} className={styles.footer__column}>
@@ -75,24 +66,14 @@ const Footer = () => {
             <Col lg={2} md={4} sm={6} xs={6} className={styles.footer__column}>
               <h5>Top Category</h5>
               <ul>
-                <li>
-                  <NavLink to='/'>Fish & Meat</NavLink>
-                </li>
-                <li>
-                  <NavLink to='/'>Soft Drinks</NavLink>
-                </li>
-                <li>
-                  <NavLink to='/'>Baby Care</NavLink>
-                </li>
-                <li>
-                  <NavLink to='/'>Beauty & Health</NavLink>
-                </li>
-                <li>
-                  <NavLink to='/'>Fruits & Vegetable</NavLink>
-                </li>
+                {categories.map((category, index) => (
+                  <li key={index}>
+                    <NavLink to={`/categories/${category.slug}`}>{category.title}</NavLink>
+                  </li>
+                ))}
               </ul>
             </Col>
-            <Col lg={2} md={4} sm={6} xs={6} className={styles.footer__column}>
+          <Col lg={2} md={4} sm={6} xs={6} className={styles.footer__column}>
               <h5>My Account</h5>
               <ul>
                 <li>

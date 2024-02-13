@@ -1,5 +1,5 @@
 #header__top {
-  background-color: #10b981;
+  background-color: white;
   padding:  20px;
 }
 
@@ -35,7 +35,7 @@
 }
 
 #header__top .top__nav__icon {
-  color: #fff;
+  color: white;
   display: flex;
   align-items: center;
 }

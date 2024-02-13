@@ -22,8 +22,8 @@ import { updateCountry } from "../../../redux/user/userSlice";
 import Cart from "../Cart/Cart";
 import ProfileDetails from "../ProfileDetails/ProfileDetails";
 import styles from "./TopNavigation.module.css";
-import Logo from '../../../assets/images/Emelo_main.png';
-import Logo2 from '../../../assets/images/Emcelo.png';
+import Logo from '../../../assets/images/logo.jpeg';
+import Logo2 from '../../../assets/images/logo.jpeg';
 
 const TopNavigation = ({ page }) => {
   const [menuShow, setMenuShow] = useState(false);
