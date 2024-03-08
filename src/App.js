@@ -11,7 +11,8 @@ import PreLoader from "./Pages/SharedComponents/PreLoader/PreLoader";
 import ScrollToTop from "./Pages/SharedComponents/ScrollToTop/ScrollToTop";
 // import CheckoutPage from "./Pages/CheckOutPage/CheckoutPage";
 import SearchResults from "./Pages/Search/SearchResults";
-const Home = lazy(() => import("./Pages/HomePage/Home/Home"));
+import {NewHome} from "./Pages/NewHomePage/Home/Home"
+// const Home = lazy(() => import("./Pages/NewHomePage/Home/Home"));
 const Login = lazy(() => import("./Pages/AuthPage/LogIn/Login"));
 const AboutUs = lazy(() => import("./Pages/AboutUsPage/AboutUs/AboutUs"));
 const Register = lazy(() => import("./Pages/AuthPage/Register/Register"));
@@ -46,8 +47,8 @@ function App() {
   reverseOrder={false} />
       <Suspense fallback={<PreLoader />}>
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
+          <Route exact path="/" element={<NewHome />} />
+          <Route path="/home" element={<NewHome />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
