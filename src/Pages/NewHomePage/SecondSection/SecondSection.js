@@ -7,6 +7,7 @@ import avacado from "../../../assets/NewHomeImages/productImages/avacado.png"
 import spinach from "../../../assets/NewHomeImages/productImages/spinach.png"
 import mushroom from "../../../assets/NewHomeImages/productImages/mushroom.png"
 import blackPepper from "../../../assets/NewHomeImages/productImages/pepper.png"
+import svgArray from "../../../assets/NewHomeImages/icons/svg/svg";
 
 const SecondSection = () => {
   return (
@@ -71,12 +72,12 @@ const SecondSection = () => {
            <section className={styles.categories}>
               <h1>CATEGORIES.</h1>
               <ul>
-                <li>Spices</li>
-                <li>Beauty Products</li>
-                <li>Art</li>
-                <li>Food Stuff</li>
-                <li>African Fabrics</li>
-                <li>Herbs</li>
+                <li><img src={svgArray[10]} />Spices</li>
+                <li><img src={svgArray[10]} />Beauty Products</li>
+                <li><img src={svgArray[10]} />Art</li>
+                <li><img src={svgArray[4]} />Food Stuff</li>
+                <li><img src={svgArray[4]} />African Fabrics</li>
+                <li><img src={svgArray[10]} />Herbs</li>
                 
               </ul>
            </section>
@@ -84,10 +85,10 @@ const SecondSection = () => {
            <section className={styles.contact}>
                <h1>CONTACT US</h1>
                 <ul>
-                  <li>info@emcelo.com</li>
-                  <li>+234 704 800 0910</li>
-                  <li>+234 704 800 0910</li>
-                  <li>Lagos State Nigeria</li>
+                  <li><img src={svgArray[10]} />info@emcelo.com</li>
+                  <li><img src={svgArray[10]} />+234 704 800 0910</li>
+                  <li><img src={svgArray[10]} />+234 704 800 0910</li>
+                  <li><img src={svgArray[10]} />Lagos State Nigeria</li>
                 </ul>
            </section>
 

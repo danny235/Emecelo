@@ -12,7 +12,7 @@ const NewTopNavigation = () => {
       <img src={HeaderLogo} alt="Logo" />
     </figure>
     <nav>
-      <p>+2348122232066</p>
+      <p>+234-704-800-0910</p>
       <a href="">Home</a>
       <a href="">Contact</a>
     </nav>
