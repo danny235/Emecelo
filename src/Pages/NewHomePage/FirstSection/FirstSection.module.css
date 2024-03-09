@@ -19,15 +19,15 @@
 .main .absoluteText{
  width: 100%;
  font-size: 90%;
- background-color: #009A49;
- color: white;
+ color: rgb(0, 0, 0);
 padding: 10px;
+background-color: white;
 height: fit-content;
 position: absolute;
 overflow: hidden;
 top: 0;
 left: 0;
-display: none;
+display: flex;
 
 
 }
@@ -153,6 +153,8 @@ letter-spacing: 0em;
 }
 .main .absoluteText{
  display: block;
+ background-color: #009A49;
+ color: white;
 }
 .main figure .searchIcon{
  display: flex;

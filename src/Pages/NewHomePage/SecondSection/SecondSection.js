@@ -116,18 +116,12 @@ const SecondSection = () => {
                 <h2>PRODUCTS</h2>
                 <figure>
                   <span> Currency Mode</span>
-
-
-              
-                
-                
-                
-                
-
-
+                  <img src={svgArray[20]} />
+                  <img src={svgArray[21]} />
                   <p>Naira</p>
                 </figure>
               </section>
+             
               <div className={styles.mainGrid}>
 
                 <div className={styles.productBox}>
@@ -137,7 +131,7 @@ const SecondSection = () => {
                    <section>
                      <h3>Ofada Rice</h3>
                      <p>4.5 <span>(5,345)</span></p>
-                     <h4>#90,000</h4>
+                     <h4><img src={svgArray[21]} />90,000</h4>
                      <span>44 items left</span>
                    </section>
 
@@ -150,7 +144,7 @@ const SecondSection = () => {
                 <section>
                   <h3>Ofada Rice</h3>
                   <p>4.5 <span>(5,345)</span></p>
-                  <h4>#90,000</h4>
+                  <h4><img src={svgArray[21]} />90,000</h4>
                   <span>44 items left</span>
                 </section>
 
@@ -167,7 +161,7 @@ const SecondSection = () => {
                    <section>
                      <h3>Ofada Rice</h3>
                      <p>4.5 <span>(5,345)</span></p>
-                     <h4>#90,000</h4>
+                     <h4><img src={svgArray[21]} />90,000</h4>
                      <span>44 items left</span>
                    </section>
 
@@ -187,7 +181,7 @@ const SecondSection = () => {
                    <section>
                      <h3>Ofada Rice</h3>
                      <p>4.5 <span>(5,345)</span></p>
-                     <h4>#90,000</h4>
+                     <h4><img src={svgArray[21]} />90,000</h4>
                      <span>44 items left</span>
                    </section>
 
@@ -208,7 +202,7 @@ const SecondSection = () => {
                    <section>
                      <h3>Ofada Rice</h3>
                      <p>4.5 <span>(5,345)</span></p>
-                     <h4>#90,000</h4>
+                     <h4><img src={svgArray[21]} />90,000</h4>
                      <span>44 items left</span>
                    </section>
 
@@ -230,7 +224,7 @@ const SecondSection = () => {
                    <section>
                      <h3>Ofada Rice</h3>
                      <p>4.5 <span>(5,345)</span></p>
-                     <h4>#90,000</h4>
+                     <h4><img src={svgArray[21]} />90,000</h4>
                      <span>44 items left</span>
                    </section>
 
@@ -244,7 +238,7 @@ const SecondSection = () => {
                 <section>
                   <h3>Ofada Rice</h3>
                   <p>4.5 <span>(5,345)</span></p>
-                  <h4>#90,000</h4>
+                  <h4><img src={svgArray[21]} />90,000</h4>
                   <span>44 items left</span>
                 </section>
 
@@ -258,7 +252,7 @@ const SecondSection = () => {
              <section>
                <h3>Ofada Rice</h3>
                <p>4.5 <span>(5,345)</span></p>
-               <h4>#90,000</h4>
+               <h4><img src={svgArray[21]} />90,000</h4>
                <span>44 items left</span>
              </section>
 
@@ -272,7 +266,7 @@ const SecondSection = () => {
           <section>
             <h3>Ofada Rice</h3>
             <p>4.5 <span>(5,345)</span></p>
-            <h4>#90,000</h4>
+            <h4><img src={svgArray[21]} />90,000</h4>
             <span>44 items left</span>
           </section>
 
@@ -286,7 +280,7 @@ const SecondSection = () => {
        <section>
          <h3>Ofada Rice</h3>
          <p>4.5 <span>(5,345)</span></p>
-         <h4>#90,000</h4>
+         <h4><img src={svgArray[21]} />90,000</h4>
          <span>44 items left</span>
        </section>
 
@@ -300,7 +294,7 @@ const SecondSection = () => {
     <section>
       <h3>Ofada Rice</h3>
       <p>4.5 <span>(5,345)</span></p>
-      <h4>#90,000</h4>
+      <h4><img src={svgArray[21]} />90,000</h4>
       <span>44 items left</span>
     </section>
 
@@ -314,7 +308,7 @@ const SecondSection = () => {
  <section>
    <h3>Ofada Rice</h3>
    <p>4.5 <span>(5,345)</span></p>
-   <h4>#90,000</h4>
+   <h4><img src={svgArray[21]} />90,000</h4>
    <span>44 items left</span>
  </section>
 
@@ -328,7 +322,7 @@ const SecondSection = () => {
 <section>
   <h3>Ofada Rice</h3>
   <p>4.5 <span>(5,345)</span></p>
-  <h4>#90,000</h4>
+  <h4><img src={svgArray[21]} />90,000</h4>
   <span>44 items left</span>
 </section>
 
@@ -342,7 +336,7 @@ const SecondSection = () => {
 <section>
   <h3>Ofada Rice</h3>
   <p>4.5 <span>(5,345)</span></p>
-  <h4>#90,000</h4>
+  <h4><img src={svgArray[21]} />90,000</h4>
   <span>44 items left</span>
 </section>
 
@@ -357,7 +351,7 @@ const SecondSection = () => {
 <section>
   <h3>Ofada Rice</h3>
   <p>4.5 <span>(5,345)</span></p>
-  <h4>#90,000</h4>
+  <h4><img src={svgArray[21]} />90,000</h4>
   <span>44 items left</span>
 </section>
 
@@ -371,7 +365,7 @@ const SecondSection = () => {
 <section>
   <h3>Ofada Rice</h3>
   <p>4.5 <span>(5,345)</span></p>
-  <h4>#90,000</h4>
+  <h4><img src={svgArray[21]} />90,000</h4>
   <span>44 items left</span>
 </section>
 
@@ -385,7 +379,7 @@ const SecondSection = () => {
 <section>
   <h3>Ofada Rice</h3>
   <p>4.5 <span>(5,345)</span></p>
-  <h4>#90,000</h4>
+  <h4><img src={svgArray[21]} />90,000</h4>
   <span>44 items left</span>
 </section>
 
@@ -399,13 +393,14 @@ const SecondSection = () => {
 <section>
   <h3>Ofada Rice</h3>
   <p>4.5 <span>(5,345)</span></p>
-  <h4>#90,000</h4>
+  <h4><img src={svgArray[21]} />90,000</h4>
   <span>44 items left</span>
 </section>
 
 </div>
 
               </div>
+              
          </div>
       </div>
       <div className={styles.emptyDiv}>

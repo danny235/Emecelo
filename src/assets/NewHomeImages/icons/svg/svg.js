@@ -18,6 +18,13 @@ import phone from  "../../../NewHomeImages/icons/svg/phone.svg"
 import sideDivImage from  "../../../NewHomeImages/icons/svg/sideDivImage.svg"
 import hamburger from  "../../../NewHomeImages/icons/svg/hamburger.svg"
 import searchIcon from  "../../../NewHomeImages/icons/svg/searchIcon.svg"
+import switchicon from  "../../../NewHomeImages/icons/svg/switch.svg"
+import nairaSign from  "../../../NewHomeImages/icons/svg/nairaSign.svg"
+import whiteArrow from  "../../../NewHomeImages/icons/svg/whiteArrow.svg"
+import greenArrow from  "../../../NewHomeImages/icons/svg/greenArrow.svg"
+
+
+
 const svgArray =[
 bluePhone,
 box,
@@ -38,7 +45,12 @@ phone,
 location,
 sideDivImage,
 hamburger,
-searchIcon
+searchIcon,
+switchicon,
+nairaSign,
+whiteArrow,
+greenArrow
+
 
 ]
 
