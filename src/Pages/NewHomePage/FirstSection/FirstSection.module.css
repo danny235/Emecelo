@@ -71,7 +71,15 @@ letter-spacing: 0em;
  width: 80%;
  height: 100%;
  border: none;
+
 }
+
+ input:focus {
+ outline: none;
+ border: none;
+}
+
+
 .main figure button{
  width: fit-content;
  height: fit-content;
@@ -79,4 +87,41 @@ letter-spacing: 0em;
  border-radius: 5px;
  color: white;
  background-color: #04BD6F;
+}
+
+
+
+/* end of destop styling */
+
+
+@media screen and (max-width: 950px) {
+
+ .main{
+ width: 100%;
+ align-items: center;
+ justify-content: center;
+ }
+ .main h1{
+  font-size: 230%;
+ }
+ .main h4{
+  font-size: 100%;
+ }
+.main section{
+ width: 95%;
+
+}
+.main section article{
+ font-size: 90%;
+}
+.main figure{
+ width: 95%;
+}
+.main figure input{
+ width: 100%;
+ height: 60px;
+}
+.main figure button{
+ display: none;
+}
 }

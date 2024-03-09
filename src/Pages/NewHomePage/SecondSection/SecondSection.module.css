@@ -310,3 +310,38 @@ text-align: left;
   margin: 0 auto;
  border: 1px solid #F0EFEF;
 }
+
+
+
+
+
+
+@media screen and (max-width: 950px) {
+  .main .firstDiv{
+    display: none;
+  }
+
+  .main .secondDiv .sideDiv{
+    display: none;
+  }
+  .main .secondDiv .gridDiv{
+    width: 100%;
+  }
+  .main .secondDiv .gridDiv .mainGrid{
+      flex-direction: column;
+  }
+  .main .secondDiv .gridDiv .topSection{
+    width: 95%;
+  }
+  
+  .main .secondDiv .gridDiv .topSection figure span{
+    display: none;
+  }
+  .main .secondDiv .gridDiv .mainGrid .productBox{
+    width:80%;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+}

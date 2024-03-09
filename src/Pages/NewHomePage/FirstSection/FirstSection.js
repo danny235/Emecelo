@@ -26,7 +26,7 @@ const FirstSection = () => {
       <figure>
         <input
           type="text"
-          placeholder="Search"
+          placeholder="Search for product"
           value={searchTerm}
           onChange={handleSearchInputChange}
         />

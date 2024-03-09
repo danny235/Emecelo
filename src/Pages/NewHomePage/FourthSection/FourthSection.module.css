@@ -45,3 +45,29 @@ text-align: left;
 color: white;
 
 }
+@media screen and (max-width: 950px) {
+ .main{
+  width: 100%;
+  flex-direction: column;
+  height: fit-content;
+ }
+.main section{
+ width: 100%;
+
+}
+.main section h2{
+ width: 100%;
+ font-size: 23px;
+}
+.main section article{
+ width: 100%;
+ font-size: 16px;
+ line-height: 25px;
+}
+.main figure{
+ width: 100%;
+ margin-block: 20px;
+}
+
+
+}
