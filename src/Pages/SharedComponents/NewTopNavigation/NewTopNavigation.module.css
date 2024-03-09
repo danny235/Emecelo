@@ -9,6 +9,9 @@
  font-weight: 600;
  font-family: Poppins;
 }
+.main .mobileView{
+ display: none;
+}
 .main .imageContainer{
  width:10%;
  height: 100%;
@@ -57,7 +60,19 @@
 @media screen and (max-width: 950px) {
 
 .main{
+ width: 100%;
+ justify-content: space-between;
+ height: fit-content;
+}
+.main .desktopNav{
  display: none;
+}
+.main .mobileView{
+ display: flex;
+
+}
+.main .imageContainer{
+ width: 35%;
 }
 
 }

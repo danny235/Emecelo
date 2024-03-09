@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./FirstSection.module.css";
+import svgArray from "../../../assets/NewHomeImages/icons/svg/svg";
 
 const FirstSection = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -14,6 +15,7 @@ const FirstSection = () => {
 
   return (
     <div className={styles.main}>
+      <i className={styles.absoluteText}>.......Your e-commerce mall for African products</i>
       <h1>Welcome to Emcelo</h1>
       <h4>...Your Portal for Authentic African Goods</h4>
     
@@ -31,6 +33,7 @@ const FirstSection = () => {
           onChange={handleSearchInputChange}
         />
         <button onClick={handleSearch}>Search</button>
+        <img src={svgArray[19]} className={styles.searchIcon} />
       </figure>
     </div>
   );

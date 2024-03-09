@@ -55,7 +55,6 @@ color: #04BD6F;
  width: 252px;
  height: 383px;
  border-radius: 10px;
- background-color: black;
  margin-inline: 20px;
  display: flex;
  align-items: center;
@@ -63,6 +62,20 @@ color: #04BD6F;
  flex-direction: column;
  gap: 40%;
  padding-bottom: 20px;
+ background-size: cover;
+ background-position: top;
+ background-repeat: no-repeat;
+ background-blend-mode: soft-light;
+ background-color: #000000c0;
+}
+.main .grid figure:nth-of-type(1){
+ background-image: url(../../../assets/NewHomeImages/productImages/procurement.jpg);
+}
+.main .grid figure:nth-of-type(2){
+ background-image: url(../../../assets/NewHomeImages/productImages/logistics.jpg);
+}
+.main .grid figure:nth-of-type(3){
+ background-image: url(../../../assets/NewHomeImages/productImages/delivery.jpg);
 }
 .main .grid figure h2{
  font-family: Poppins;
@@ -180,7 +193,7 @@ text-align: left;
  margin-block: 30px;
 }
 .main .grid figure{
- width: 380px;
+ width: 350px;
  align-items: center;
  justify-content: flex-end;
  gap: 150px;
@@ -209,7 +222,7 @@ font-size: 130%;
 }
 
 .main .lastDiv section{
- width:380px ;
+ width:350px ;
  justify-content: flex-start;
 }
 

@@ -2,6 +2,9 @@ import React from "react";
 import styles from "./SecondSection.module.css";
 import TestImg from "../../../assets/NewHomeImages/productImages/FirstSectionBackground.jpg";
 import pepper from "../../../assets/NewHomeImages/productImages/black pepper.png"
+import spiceIcon from "../../../assets/NewHomeImages/icons/png/spiceIcon.png"
+import artIcon from "../../../assets/NewHomeImages/icons/png/artIcon.png"
+import beauty from "../../../assets/NewHomeImages/icons/png/beutyProducts.png"
 import carrots from "../../../assets/NewHomeImages/productImages/carrots.png"
 import avacado from "../../../assets/NewHomeImages/productImages/avacado.png"
 import spinach from "../../../assets/NewHomeImages/productImages/spinach.png"
@@ -72,12 +75,12 @@ const SecondSection = () => {
            <section className={styles.categories}>
               <h1>CATEGORIES.</h1>
               <ul>
-                <li><img src={svgArray[10]} />Spices</li>
-                <li><img src={svgArray[10]} />Beauty Products</li>
-                <li><img src={svgArray[10]} />Art</li>
+                <li><img src={spiceIcon} />Spices</li>
+                <li><img src={beauty} />Beauty Products</li>
+                <li><img src={artIcon} />Art</li>
                 <li><img src={svgArray[4]} />Food Stuff</li>
-                <li><img src={svgArray[4]} />African Fabrics</li>
-                <li><img src={svgArray[10]} />Herbs</li>
+                <li><img src={svgArray[3]} />African Fabrics</li>
+                <li><img src={svgArray[13]} />Herbs</li>
                 
               </ul>
            </section>
@@ -85,17 +88,17 @@ const SecondSection = () => {
            <section className={styles.contact}>
                <h1>CONTACT US</h1>
                 <ul>
-                  <li><img src={svgArray[10]} />info@emcelo.com</li>
-                  <li><img src={svgArray[10]} />+234 704 800 0910</li>
-                  <li><img src={svgArray[10]} />+234 704 800 0910</li>
-                  <li><img src={svgArray[10]} />Lagos State Nigeria</li>
+                  <li><img src={svgArray[14]} />info@emcelo.com</li>
+                  <li><img src={svgArray[15]} />+234 704 800 0910</li>
+                  <li><img src={svgArray[15]} />+234 704 800 0910</li>
+                  <li><img src={svgArray[16]} />Lagos State Nigeria</li>
                 </ul>
            </section>
 
            <section className={styles.popUp}>
              <figure>
 
-               <img src={TestImg} />
+               <img src={svgArray[17]} />
 
                <h4>Embrace Culinary Experience</h4>
 
@@ -113,6 +116,15 @@ const SecondSection = () => {
                 <h2>PRODUCTS</h2>
                 <figure>
                   <span> Currency Mode</span>
+
+
+              
+                
+                
+                
+                
+
+
                   <p>Naira</p>
                 </figure>
               </section>

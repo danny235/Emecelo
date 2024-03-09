@@ -11,6 +11,13 @@ import coffeeCup from "../../../NewHomeImages/icons/svg/coffeeCup.svg"
 import userIcon from  "../../../NewHomeImages/icons/svg/userIcon.svg"
 import downarrow from  "../../../NewHomeImages/icons/svg/downArrow.svg"
 import topCart from  "../../../NewHomeImages/icons/svg/topCart.svg"
+import herbs from  "../../../NewHomeImages/icons/svg/herbs.svg"
+import mail from  "../../../NewHomeImages/icons/svg/mail.svg"
+import location from  "../../../NewHomeImages/icons/svg/location.svg"
+import phone from  "../../../NewHomeImages/icons/svg/phone.svg"
+import sideDivImage from  "../../../NewHomeImages/icons/svg/sideDivImage.svg"
+import hamburger from  "../../../NewHomeImages/icons/svg/hamburger.svg"
+import searchIcon from  "../../../NewHomeImages/icons/svg/searchIcon.svg"
 const svgArray =[
 bluePhone,
 box,
@@ -24,7 +31,14 @@ greenPresent,
 coffeeCup,
 userIcon,
 downarrow,
-topCart
+topCart,
+herbs,
+mail,
+phone,
+location,
+sideDivImage,
+hamburger,
+searchIcon
 
 ]
 

@@ -11,18 +11,22 @@ const NewTopNavigation = () => {
     <figure className={styles.imageContainer}>
       <img src={HeaderLogo} alt="Logo" />
     </figure>
-    <nav>
+    <nav className={styles.desktopNav}>
       <p>+234-704-800-0910</p>
       <a href="">Home</a>
       <a href="">Contact</a>
     </nav>
-    <section>
+    <section className={styles.desktopNav}>
     <img src={svgArray[10]} />
      <span>
       Account
      </span>
      <img src={svgArray[11]} />
      <img src={svgArray[12]} />
+    </section>
+    <section className={styles.mobileView}>
+      <img src={svgArray[12]} />
+      <img src={svgArray[18]} />
     </section>
     </div>
   );
