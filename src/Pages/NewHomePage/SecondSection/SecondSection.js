@@ -14,7 +14,7 @@ import spinach from "../../../assets/NewHomeImages/productImages/spinach.png"
 import mushroom from "../../../assets/NewHomeImages/productImages/mushroom.png"
 import blackPepper from "../../../assets/NewHomeImages/productImages/pepper.png"
 import svgArray from "../../../assets/NewHomeImages/icons/svg/svg";
-
+import productArray from "../../../assets/NewHomeImages/icons/svg/productImages";
 const SecondSection = () => {
   return (
     <div className={styles.main}>
@@ -127,18 +127,20 @@ const SecondSection = () => {
              
               <div className={styles.mainGrid}>
 
-                <div className={styles.productBox}>
-                   <figure>
-                    <img src={TestImg} />
-                   </figure>
-                   <section>
-                     <h3>Ofada Rice</h3>
-                     <p>4.5 <span>(5,345)</span></p>
-                     <h4><img src={svgArray[21]} />90,000</h4>
-                     <span>44 items left</span>
-                   </section>
-
-                </div>
+              {productArray.map((product, index) => ( 
+              <div className={styles.productBox}  key={index}>
+                  <figure>
+                    <img src={product.img} />
+                  </figure>
+                  <section>
+                    <h3>{product.productName}</h3>
+                    <p>{product.productRating}</p>
+                    <h4><img src={svgArray[21]} alt="Currency" />{product.productPrice}</h4>
+                    <span>{product.productQuantity}</span>
+                  </section>
+               
+                  </div>
+              ))}
 
                 <div className={styles.productBox}>
                 <figure>
