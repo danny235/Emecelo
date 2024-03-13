@@ -1,0 +1,78 @@
+.main{
+ width: 100%;
+ height:70vh;
+ margin: 0 auto;
+ padding: 10% 5%;
+ margin-top: -3%;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ background-image: url(../../../assets/NewHomeImages/productImages/lastDivBack.jpg);
+ background-size: cover;
+ background-position: top;
+ background-repeat: no-repeat;
+ background-blend-mode: soft-light;
+ background-color: rgba(4, 40, 16, 0.834)
+}
+.main section{
+ width: 60%;
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+ justify-content: center;
+ gap: 20px;
+}
+.main figure{
+ width: 30%;
+ height: auto;
+}
+.main figure img{
+ width: 100%;
+ height: 100%;
+}
+.main section h2{
+ font-family: Poppins;
+font-size: 32px;
+font-weight: 800;
+line-height: 34px;
+letter-spacing: 0em;
+text-align: left;
+color: white;
+
+}
+.main section article{
+ font-family: Poppins;
+font-size: 20px;
+font-weight: 200;
+line-height: 30px;
+letter-spacing: 0em;
+text-align: left;
+color: white;
+
+}
+@media screen and (max-width: 950px) {
+ .main{
+  width: 100%;
+  flex-direction: column;
+  height: fit-content;
+ }
+.main section{
+ width: 100%;
+
+}
+.main section h2{
+ width: 100%;
+ font-size: 23px;
+}
+.main section article{
+ width: 100%;
+ font-size: 16px;
+ line-height: 25px;
+}
+.main figure{
+ width: 50%;
+ margin-block: 20px;
+}
+
+
+}

@@ -1,0 +1,168 @@
+.main{
+ background-color: #04331f5e;
+ width: 100%;
+ height:85vh;
+ margin: 0 auto;
+ padding-top: 100px;
+ display: flex;
+ align-items: center;
+ justify-content: flex-start;
+ flex-direction: column;
+ background-image: url(../../../assets/NewHomeImages/productImages/groundnut.jpg);
+ background-size: cover;
+ background-position: top;
+ background-repeat: no-repeat;
+ background-blend-mode: soft-light;
+ position: relative;
+
+}
+.main .absoluteText{
+ width: 100%;
+ font-size: 90%;
+ color: rgb(0, 0, 0);
+padding: 10px;
+background-color: white;
+height: fit-content;
+position: absolute;
+overflow: hidden;
+top: 0;
+left: 0;
+display: flex;
+
+
+}
+.main h1{
+ font-size: 300%;
+ color: white;
+ margin-bottom: 10px;
+ font-family: Poppins;
+font-weight: 600;
+line-height: 68px;
+letter-spacing: 0em;
+
+}
+.main h4{
+ font-size: 120%;
+ color: white;
+ padding-bottom: 20px;
+ margin-bottom: 20px;
+ font-family: Poppins;
+font-weight: 500;
+line-height: 26px;
+letter-spacing: 0em;
+border-bottom:solid 1px #04BD6F;
+
+}
+.main section{
+ width:60% ;
+ margin: 0 auto;
+ text-align: center;
+ height: fit-content;
+ font-size: 130%;
+ color: white;
+ margin-bottom: 10px;
+
+}
+.main section article{
+ width: 100%;
+ text-align: center;
+ margin: 0 auto;
+ padding: 0 auto;
+ margin-bottom: 20px;
+ font-family: Poppins;
+font-size: 20px;
+font-weight: 300;
+line-height: 30px;
+letter-spacing: 0em;
+
+}
+.main figure{
+ width: 50%;
+ border-radius: 10px;
+ height: fit-content;
+ padding: 10px 10px;
+ background-color: white;
+ display: flex;
+}
+.main figure .searchIcon{
+ display: none;
+}
+.main figure input{
+ width: 80%;
+ height: 100%;
+ border: none;
+
+}
+
+ input:focus {
+ outline: none;
+ border: none;
+}
+
+
+.main figure button{
+ width: fit-content;
+ height: fit-content;
+ padding: 10px 40px;
+ border-radius: 5px;
+ color: white;
+ background-color: #04BD6F;
+}
+
+
+
+/* end of destop styling */
+
+
+@media screen and (max-width: 950px) {
+
+ .main{
+ width: 100%;
+ height: 85vh;
+ align-items: center;
+ justify-content: center;
+ background-image: url(../../../assets/NewHomeImages/productImages/groundnut.jpg);
+ background-size: cover;
+ background-position: top;
+ background-repeat: no-repeat;
+ background-blend-mode: soft-light;
+ background-color: #000000d5;
+ }
+ .main h1{
+  font-size: 220%;
+ }
+ .main h4{
+  font-size: 100%;
+ }
+.main section{
+ width: 95%;
+
+}
+.main section article{
+ font-size: 90%;
+}
+.main figure{
+ width: 95%;
+}
+.main figure input{
+ width: 100%;
+ height: 60px;
+}
+.main figure button{
+ display: none;
+}
+.main .absoluteText{
+ display: block;
+ background-color: #009A49;
+ color: white;
+}
+.main figure .searchIcon{
+ display: flex;
+}
+.main figure{
+ height: 60px;
+}
+.main figure input{
+ height: 100%;
+}
+}

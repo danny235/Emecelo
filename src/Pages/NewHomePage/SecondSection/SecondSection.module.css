@@ -1,0 +1,589 @@
+.main{
+ width: 100%;
+ height:fit-content;
+ margin: 0 auto;
+ background-color: #F9FAFB;
+ position:relative;
+ padding-top: 5%;
+
+
+
+}
+.main .firstDiv{
+ width: 70%;
+ margin: 0 auto;
+ position: absolute;
+ top: -145px;
+ left: 15%;
+ background-color: white;
+ padding: 20px 0px 20px 0px ;
+ height: fit-content;
+ border-radius: 30px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ flex-direction: column;
+ box-shadow: 0px 3.5840978622436523px 24.730276107788086px 0px #00000017;
+/* 
+ box-shadow: 0px 0px 10px rgba(97, 89, 89, 0.304); */
+}
+.main .sectionWithArrows{
+ width: 100%;
+ height: 80%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ flex-direction: row;
+}
+.main .sectionWithArrows .roller{
+ width: 80%;
+ height: 100%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ flex-direction: row;
+ gap: 5px;
+}
+
+.main .sectionWithArrows .roller figure{
+ height: 100%;
+ width: 30%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ flex-direction: column;
+}
+
+.main .sectionWithArrows .roller figure img{
+ width: 100%;
+ height: auto;
+ border-radius: 10px;
+}
+.main .sectionWithArrows .roller figure p{
+  margin-block: 5px;
+  font-size: 95%;
+}
+.main .sectionWithArrows .arrow{
+ width:60px;
+ height:60px;
+ text-align: center;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ border-radius: 50%;
+ margin-inline: 10px;
+ font-size: 150% ;
+ margin-top: -30px;
+}
+
+.main .sectionWithoutArrows span{
+ width: fit-content;
+ height: fit-content;
+ padding: 10px 30px;
+ margin-block: 10px 0px;
+ color: white;
+ background-color:#04BD6F;
+ ;
+ border-radius: 20px;
+ font-size: 100%;
+}
+.main .secondDiv{
+ width:100%;
+ gap: 10px;
+ height:fit-content;
+ padding: 10px;
+ margin:0 auto;
+ margin-top:5%;
+ display: flex;
+ align-items: flex-start;
+ justify-content: center;
+
+}
+.main .secondDiv .sideDiv{
+ width: 20%;
+ height: 100%;
+ display: flex;
+ gap: 10px;
+ margin-inline: 40px;
+ align-items:center;
+ justify-content: flex-start;
+ flex-direction: column;
+
+
+}
+
+.main .secondDiv .sideDiv section{
+ width: 100%;
+ height: fit-content;
+ padding: 10px;
+ margin-block: 5px;
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+ justify-content: center;
+ border: 1px solid #F0EFEF;
+ background-color: white;
+
+}
+.main .secondDiv .sideDiv section a{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-block: 5px;
+  border-radius: 15px;
+  height: fit-content;
+  width: 100%;
+  padding: 5px 10px; 
+}
+.main .secondDiv .sideDiv section a:hover{
+  background-color: #04BD6F;
+  color: white;
+}
+.main .secondDiv .sideDiv section a img{
+  width: 17px;
+  height: 17px;
+}
+.main .secondDiv .sideDiv section h1{
+  color: #6D6D6D;
+  width: 100%;
+font-family: Poppins;
+font-size: 22px;
+font-weight: 600;
+line-height: 33px;
+letter-spacing: 0em;
+text-align: left;
+padding: 10px;
+ border-bottom: 1.5px solid #95959533;
+}
+.main .secondDiv .sideDiv section:nth-of-type(3){
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: fit-content;
+  box-shadow: 0px 3.5840978622436523px 24.730276107788086px 0px #00000017;
+}
+
+.main .secondDiv .sideDiv section:nth-of-type(3) img{
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    margin-block: 10px;
+}
+.main .secondDiv .sideDiv section:nth-of-type(3) h4{
+  font-family: Poppins;
+font-size: 15px;
+font-weight: 500;
+line-height: 15px;
+letter-spacing: 0em;
+text-align: center;
+margin-block: 10px;
+width: 60%;
+margin: 0 auto;
+
+}
+.main .secondDiv .sideDiv section:nth-of-type(3) p{
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin-block: 10px;
+  
+
+}
+.main .secondDiv .sideDiv section:nth-of-type(3) button{
+  font-family: Poppins;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: white;
+  margin: 0 auto;
+  background-color: #1CAF7A;
+  padding: 10px 20px;
+  margin-block: 10px;
+  border-radius: 10px;
+  
+
+}
+.main .secondDiv .gridDiv{
+ width: 65%;
+ height: 100%;
+ display: flex;
+ padding: 20px 0px;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ border: 1px solid #F0EFEF;
+ background-color: white;
+ position: relative;
+}
+.main .secondDiv .gridDiv .topSection{
+ width: 100%;
+ height: 50px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ border-bottom: 1.5px solid #95959533;
+}
+
+.main .secondDiv .gridDiv .topSection h2{
+ width: 60%;
+ font-family: Poppins;
+font-size: 22px;
+font-weight: 600;
+line-height: 33px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+
+.main .secondDiv .gridDiv .topSection figure{
+ display: flex;
+ width: fit-content;
+ align-items: center;
+ justify-content: center;
+ gap: 5px;
+}
+.main .secondDiv .gridDiv .topSection figure span{
+  font-family: Poppins;
+font-size: 15px;
+font-weight: 400;
+line-height: 23px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+.main .secondDiv .gridDiv .mainGrid{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 auto;
+}
+
+.main .secondDiv .gridDiv .mainGrid .productBox{
+ width: 25%;
+ height: auto;
+ display: flex;
+ margin: 10px;
+ padding: 20px 10px;
+ align-items: center;
+ justify-content: center;
+ border: 1px solid #F0EFEF;
+}
+.main .secondDiv .gridDiv .mainGrid .productBox:hover{
+  transition: .5s;
+  border: 1px solid #04bd7085;
+  cursor: pointer;
+  box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.355);
+}
+
+
+.main .secondDiv .gridDiv .mainGrid .productBox figure{
+ width: 40%;
+ height: 100%;
+}
+
+.main .secondDiv .gridDiv .mainGrid .productBox figure img{
+ width: 100%;
+ height: 100%;
+ border-radius: 10px;
+}
+.main .secondDiv .gridDiv .mainGrid .productBox section{
+ height: 50%;
+ width: 50%;
+ margin-inline: 10px;
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+ justify-content: center;
+ gap: 5px;
+}
+.main .secondDiv .gridDiv .mainGrid .productBox section h3{
+  font-family: Poppins;
+font-size: 14px;
+font-weight: 500;
+letter-spacing: 0em;
+text-align: left;
+
+}
+.main .secondDiv .gridDiv .mainGrid .productBox section p{
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0em;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  
+
+}
+.main .secondDiv .gridDiv .mainGrid .productBox section p .span{
+  color: gray;
+  font-size: 100%;
+}
+
+.main .secondDiv .gridDiv .mainGrid .productBox section h4{
+font-family: Poppins;
+font-size: 14px;
+font-weight: 500;
+letter-spacing: 0em;
+display: flex;
+gap: 5px;
+text-align: left;
+}
+
+.main .secondDiv .gridDiv .mainGrid .productBox section span{
+font-family: Poppins;
+font-size: 10px;
+font-weight: 400;
+letter-spacing: 0em;
+text-align: left;
+}
+.main .secondDiv .gridDiv .bottomSection{
+  width: 100%;
+  height: 70px;
+  background-color: red;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.main .emptyDiv{
+  width: 90%;
+  height: fit-content;
+  display: flex;
+  padding: 7% 3%;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  margin: 0 auto;
+ border: 1px solid #F0EFEF;
+ position: relative;
+}
+.main .emptyDiv .topSection{
+  width: 60%;
+  height: 100%;
+}
+.main .emptyDiv .topSection h1{
+font-size: 260%;
+font-weight: 800;
+line-height: 50px;
+letter-spacing: 0em;
+text-align: left;
+width: 100%;
+margin-block: 30px;
+
+}
+.main .emptyDiv .topSection article{
+  font-family: Poppins;
+font-size: 130%;
+font-weight: 300;
+line-height: 35px;
+letter-spacing: 0em;
+text-align: justified;
+
+}
+.main .emptyDiv figure:nth-of-type(1){
+  width: 30%;
+  height: 100%;
+  margin-inline: 20px;
+}
+
+.main .emptyDiv figure:nth-of-type(1) img{
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.main .emptyDiv figure:nth-of-type(2){
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 950px) {
+  .main .firstDiv{
+    display: none;
+  }
+  .main .secondDiv{
+    flex-direction: column-reverse;
+    height: fit-content;
+  }
+
+  .main .secondDiv .sideDiv{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 auto;
+  }
+  .main .secondDiv .sideDiv section:nth-of-type(1){
+    display: none;
+  }
+  .main .secondDiv .sideDiv section:nth-of-type(2){
+    display: none;
+  }
+  .main .secondDiv .sideDiv section:nth-of-type(3){
+   width: 95%;
+   max-width: 400px;
+   height: 500px;
+  }
+  .main .secondDiv .sideDiv section:nth-of-type(3) img{
+    width: 50%;
+    height: auto;
+  }
+  .main .secondDiv .sideDiv section:nth-of-type(3) p{
+    font-family: Poppins;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;    
+
+  }
+  
+  .main .secondDiv .sideDiv section:nth-of-type(3) h4{
+    font-family: Poppins;
+font-size: 18px;
+font-weight: 500;
+line-height: 18px;
+letter-spacing: 0em;
+text-align: center;
+
+  }
+  .main .secondDiv .sideDiv section:nth-of-type(3) button{
+    font-size: 130%;
+  }
+  .main .emptyDiv{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding:10% 3%;
+    gap: 30px;
+    height:fit-content;
+
+  }
+  .main .emptyDiv .topSection{
+    width: 100%;
+  }
+  .main .emptyDiv figure:nth-of-type(1){
+    max-width: 350px;
+    height: auto;
+    width: 90%;
+    margin-bottom: 30px;
+  }
+  .main .emptyDiv .topSection h1{    
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 50px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+  .main .emptyDiv .topSection article{
+    font-family: Poppins;
+font-size: 15px;
+font-weight: 400;
+line-height: 23px;
+letter-spacing: 0em;
+text-align: justified;
+
+  }
+  .main .secondDiv .gridDiv{
+    width: 100%;
+  }
+  .main .secondDiv .gridDiv .mainGrid{
+      flex-direction: column;
+  }
+  .main .secondDiv .gridDiv .topSection{
+    width: 95%;
+  }
+  
+  .main .secondDiv .gridDiv .topSection figure span{
+    display: none;
+  }
+  .main .secondDiv .gridDiv .mainGrid .productBox{
+    width:85%;
+    height: fit-content;
+    padding-block:50px ;
+    align-items: center;
+    justify-content: center;
+    border: 1.35px solid #F0EFEF;
+  }
+  .main .secondDiv .gridDiv .mainGrid .productBox section{
+    height: 50%;
+    width: 60%;
+    margin-inline: 10px;
+   }
+   .main .secondDiv .gridDiv .mainGrid .productBox section h3{
+    font-family: Poppins;
+font-size: 19px;
+font-weight: 500;
+line-height: 28px;
+letter-spacing: 0em;
+text-align: left;
+
+   
+   }
+   .main .secondDiv .gridDiv .mainGrid .productBox section p{
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    
+     
+   
+   }
+   
+   .main .secondDiv .gridDiv .mainGrid .productBox section h4{
+    font-family: Poppins;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: left;
+    
+   }
+   
+   .main .secondDiv .gridDiv .mainGrid .productBox section span{
+    font-family: Poppins;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    
+   }
+
+}
