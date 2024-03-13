@@ -24,7 +24,7 @@ const NewTopNavigation = () => {
       </nav>
       <section className={styles.desktopNav}>
         <img src={svgArray[10]} />
-        <span>Account</span>
+        <a href="/login">Account</a>
         <img src={svgArray[11]} />
         <img src={svgArray[12]} />
       </section>

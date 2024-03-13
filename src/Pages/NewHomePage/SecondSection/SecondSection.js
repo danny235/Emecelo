@@ -2,6 +2,9 @@ import React from "react";
 import styles from "./SecondSection.module.css";
 import TestImg from "../../../assets/NewHomeImages/productImages/FirstSectionBackground.jpg";
 import pepper from "../../../assets/NewHomeImages/productImages/black pepper.png"
+import emptyDivBack from "../../../assets/NewHomeImages/icons/svg/emptyDivBack.png"
+import shareIcon from "../../../assets/NewHomeImages/icons/svg/shareIcon.png"
+import copyIcon from "../../../assets/NewHomeImages/icons/svg/copyIcon.svg"
 import spiceIcon from "../../../assets/NewHomeImages/icons/png/spiceIcon.png"
 import artIcon from "../../../assets/NewHomeImages/icons/png/artIcon.png"
 import beauty from "../../../assets/NewHomeImages/icons/png/beutyProducts.png"
@@ -75,12 +78,12 @@ const SecondSection = () => {
            <section className={styles.categories}>
               <h1>CATEGORIES.</h1>
               <ul>
-                <li><img src={spiceIcon} />Spices</li>
-                <li><img src={beauty} />Beauty Products</li>
-                <li><img src={artIcon} />Art</li>
-                <li><img src={svgArray[4]} />Food Stuff</li>
-                <li><img src={svgArray[3]} />African Fabrics</li>
-                <li><img src={svgArray[13]} />Herbs</li>
+                <a href="/categories/spices"><img src={spiceIcon} />Spices</a>
+                <a href="/categories/beauty-products"><img src={beauty} />Beauty Products</a>
+                <a  href="/categories/art"><img src={artIcon} />Art</a>
+                <a  href="/categories/food-stuff"><img src={svgArray[4]} />Food Stuff</a>
+                <a  href="/categories/african-fabrics"><img src={svgArray[3]} />African Fabrics</a>
+                <a  href="/categories/herbs"><img src={svgArray[13]} />Herbs</a>
                 
               </ul>
            </section>
@@ -88,10 +91,10 @@ const SecondSection = () => {
            <section className={styles.contact}>
                <h1>CONTACT US</h1>
                 <ul>
-                  <li><img src={svgArray[14]} />info@emcelo.com</li>
-                  <li><img src={svgArray[15]} />+234 704 800 0910</li>
-                  <li><img src={svgArray[15]} />+234 704 800 0910</li>
-                  <li><img src={svgArray[16]} />Lagos State Nigeria</li>
+                  <a><img src={svgArray[14]} />info@emcelo.com</a>
+                  <a><img src={svgArray[15]} />+234 704 800 0910</a>
+                  <a><img src={svgArray[15]} />+234 704 800 0910</a>
+                  <a><img src={svgArray[16]} />Lagos State Nigeria</a>
                 </ul>
            </section>
 
@@ -410,11 +413,11 @@ const SecondSection = () => {
       </section>
          
           <figure>
-            <img src={TestImg} />
+            <img src={emptyDivBack} />
           </figure>
           <figure>
-          <img src={svgArray[20]} />
-          <img src={svgArray[20]} />
+          <img src={shareIcon} />
+          <img src={copyIcon} />
           </figure>
       </div>
     </div>
