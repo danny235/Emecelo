@@ -5,14 +5,17 @@ import FirstSection from "../FirstSection/FirstSection";
 import SecondSection from "../SecondSection/SecondSection";
 import ThirdSection from "../ThirdSection/ThirdSection";
 import FourthSection from "../FourthSection/FourthSection";
+import MobileViewNav from "../../SharedComponents/NewTopNavigation/mobileVeiwNav";
+
 
 const NewHome = () =>{
  return(
    <>
    <NewTopNavigation />
+   <MobileViewNav />
    <FirstSection />
    <SecondSection />
-   <ThirdSection />
+    <ThirdSection />
    <FourthSection />
    <Footer />
    </>

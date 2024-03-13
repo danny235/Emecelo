@@ -1,0 +1,82 @@
+.main{
+ width:100% ;
+ height: 100vh;
+ top:0px;
+left: 0;
+position: fixed;
+z-index: 10;
+}
+
+.background{
+width: 100%;
+height:100%;
+margin: 0 auto;
+position: absolute;
+top: 0;
+left: 0;
+background-color: rgba(0, 0, 0, 0.682);
+}
+
+.hiddenDiv{
+ position:absolute;
+ width: 100%;
+ height: 75%;
+ bottom: 0;
+ left: 0;
+ display: flex;
+ align-items: flex-start;
+ justify-content: center;
+ flex-direction: column;
+ background-color: rgb(255, 255, 255);
+ padding: 20px;
+ border-radius: 20px 20px 0px 0px;
+ z-index: 50;
+}
+ .hiddenDiv section{
+ display: flex;
+ flex-direction: column;
+ margin-block: 20px;
+ height: 30%;
+
+}
+.hiddenDiv a{
+ margin-block: 8px;
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-content: center;
+ width: fit-content;
+ height: fit-content;
+ gap: 10px;
+
+}
+ .hiddenDiv .firstSection{
+ width: 100%;
+ height: fit-content; 
+ padding-bottom: 30px;
+ border-bottom: 2px solid #95959533;
+}
+ .hiddenDiv .lastSection{
+ width: 100%;
+ height: fit-content;
+}
+.hiddenDiv button{
+ width: 100%;
+ height: fit-content;
+ padding: 20px 40px;
+ background-color: green;
+ color: white;
+ border-radius: 15px;
+}
+
+
+
+
+
+/* @media screen and (max-width: 950px) {
+
+ .main{
+  display: block;
+
+ }
+} */

@@ -404,7 +404,18 @@ const SecondSection = () => {
          </div>
       </div>
       <div className={styles.emptyDiv}>
-      
+      <section className={styles.topSection}>
+      <h1>Embrace Africa with Emcelo</h1>
+      <article>Embrace Africa with Emcelo: Journey through flavors, elegance, and artistry. Experience the richness of our spices, the luxury of our beauty products, the beauty of our fabrics, and the inspiration of our art. Welcome to Emcelo where Africa comes alive.</article>
+      </section>
+         
+          <figure>
+            <img src={TestImg} />
+          </figure>
+          <figure>
+          <img src={svgArray[20]} />
+          <img src={svgArray[20]} />
+          </figure>
       </div>
     </div>
   );
