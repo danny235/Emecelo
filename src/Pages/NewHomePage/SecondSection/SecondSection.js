@@ -71,7 +71,7 @@ const SecondSection = () => {
           </p>
         </section>
         <section className={styles.sectionWithoutArrows}>
-          <span>SPICES</span>
+          <a href="/categories/spices">SPICES</a>
         </section>
       </div>
 

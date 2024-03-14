@@ -76,7 +76,7 @@
  margin-top: -30px;
 }
 
-.main .sectionWithoutArrows span{
+.main .sectionWithoutArrows a{
  width: fit-content;
  height: fit-content;
  padding: 10px 30px;
