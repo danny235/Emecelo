@@ -16,6 +16,7 @@ import blackPepper from "../../../assets/NewHomeImages/productImages/pepper.png"
 import svgArray from "../../../assets/NewHomeImages/icons/svg/svg";
 import productArray from "../../../assets/NewHomeImages/icons/svg/productImages";
 import star from "../../../assets/NewHomeImages/icons/svg/star.svg"
+import rightArrow from "../../../assets/NewHomeImages/icons/svg/whiteArrow.svg"
 const SecondSection = () => {
   return (
     <div className={styles.main}>
@@ -70,7 +71,7 @@ const SecondSection = () => {
           </p>
         </section>
         <section className={styles.sectionWithoutArrows}>
-          <span>SPICES</span>
+          <a href="/categories/spices">SPICES</a>
         </section>
       </div>
 
@@ -99,7 +100,7 @@ const SecondSection = () => {
                 </ul>
            </section>
 
-           <section className={styles.popUp}>
+           <section id={styles.popUp}>
              <figure>
 
                <img src={svgArray[17]} />
@@ -109,7 +110,7 @@ const SecondSection = () => {
                <p>Elevate Your Dining Experience  With Emcelo's Premium 
                Food Delivery Service, Bringing Top-Quality Cuisine Staright To Your Home & Office.</p>
 
-               <button>Order now</button>
+               <a href="/categories">Order now </a>
 
              </figure>
            </section>
@@ -128,7 +129,7 @@ const SecondSection = () => {
              
               <div className={styles.mainGrid}>
 
-              
+
 
               {productArray.map((product, index) => ( 
               <div className={styles.productBox}  key={index}>
