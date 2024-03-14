@@ -4,9 +4,9 @@ import svgArray from "../../../assets/NewHomeImages/icons/svg/svg";
 import "./functions"
 
 
-const MobileViewNav = ({ isDivVisible }) => {
+const MobileViewNav = () => {
  return (
-   <div className={styles.main} style={{ display: isDivVisible ? 'block' : 'none' }}>
+   <div className={styles.main} id={styles.mobileNav}>
 
   <div className={styles.background}></div>
   <div className={styles.hiddenDiv}>

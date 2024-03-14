@@ -4,6 +4,9 @@ import thirdImage from "../../../assets/NewHomeImages/productImages/thirdImage.j
 import fourthImage from "../../../assets/NewHomeImages/productImages/fourthImage.jpg"
 import fifthImage from "../../../assets/NewHomeImages/productImages/lastDivBack.jpg"
 
+
+
+
 // Array of background images
 const backgroundImages = [
  firstImage,
