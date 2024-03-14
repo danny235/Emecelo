@@ -26,6 +26,7 @@ const FirstSection = () => {
 
   return (
     <div className={styles.main} id={styles.main} style={{ backgroundImage: `url(${backgroundImage})` }}>
+    
       <i className={styles.absoluteText}><marquee behavior="scroll" direction="left">. . . . . . . . .Your e-commerce mall for African indigenous products, foods and supplies</marquee></i>
       <h1>Welcome to Emcelo</h1>
       <h4>...Your Portal for Authentic African Goods</h4>
