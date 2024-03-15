@@ -3,17 +3,17 @@ import {useNavigate} from "react-router-dom";
 import styles from "./NewTopNavigation.module.css";
 import HeaderLogo from '../../../assets/NewHomeImages/icons/svg/newLogo.svg';
 import svgArray from "../../../assets/NewHomeImages/icons/svg/svg";
-import MobileViewNav from "./mobileVeiwNav";
+import toggleVisibility from "./mobileVeiwNav";
 import "./functions"
 
 const NewTopNavigation = () => {
   const navigate = useNavigate();
-  const mobileNav = MobileViewNav;
-    const toggleVisibility =()=>{
-            alert("Mobile Menu Coming Soon");
+  // const mobileNav = MobileViewNav;
+  //   const toggleVisibility =()=>{
+  //           alert("Mobile Menu Coming Soon");
            
 
-    }
+  //   }
 
   return (
     <div className={styles.main}>
@@ -33,7 +33,7 @@ const NewTopNavigation = () => {
       </section>
       <section className={styles.mobileView}>
         <img src={svgArray[12]} />
-        <img src={svgArray[18]} id={styles.hamburger} onClick={toggleVisibility} />
+        <img src={svgArray[18]} id={styles.hamburger}  />
       </section>
     </div>
   );

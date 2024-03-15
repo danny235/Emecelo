@@ -2,7 +2,7 @@ import firstImage from "../../../assets/NewHomeImages/productImages/firstImage.j
 import secondImage from "../../../assets/NewHomeImages/productImages/secondImage.jpg"
 import thirdImage from "../../../assets/NewHomeImages/productImages/thirdImage.jpg"
 import fourthImage from "../../../assets/NewHomeImages/productImages/fourthImage.jpg"
-import fifthImage from "../../../assets/NewHomeImages/productImages/lastDivBack.jpg"
+
 
 
 
@@ -13,7 +13,6 @@ const backgroundImages = [
  secondImage,
  thirdImage,
  fourthImage,
- fifthImage,
 ];
 
 
