@@ -7,7 +7,7 @@ import "./functions"
 const MobileViewNav = () => {
  
  return (
-   <div className={styles.main} id={styles.mobileNav} >
+   <div className={styles.main} id={styles.mobileNav}>
 
   <div className={styles.background}></div>
   <div className={styles.hiddenDiv}>
