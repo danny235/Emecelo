@@ -1,19 +1,23 @@
-import React from "react";
-import {useNavigate} from "react-router-dom";
+import React, { useRef } from 'react';
+import { useNavigate } from "react-router-dom";
 import styles from "./NewTopNavigation.module.css";
 import HeaderLogo from '../../../assets/NewHomeImages/icons/svg/newLogo.svg';
 import svgArray from "../../../assets/NewHomeImages/icons/svg/svg";
-import toggleVisibility from "./mobileVeiwNav";
-import "./functions"
+import MobileViewNav from "./mobileVeiwNav";
 
 const NewTopNavigation = () => {
   const navigate = useNavigate();
-  // const mobileNav = MobileViewNav;
-  //   const toggleVisibility =()=>{
-  //           alert("Mobile Menu Coming Soon");
-           
+  const importedDivRef = useRef(null);
+  const displayDiv = () => {
+    if (importedDivRef.current) {
+          
+        importedDivRef.current.style.display='block'
 
-  //   }
+  
+     
+    }
+  };
+  
 
   return (
     <div className={styles.main}>
@@ -33,8 +37,10 @@ const NewTopNavigation = () => {
       </section>
       <section className={styles.mobileView}>
         <img src={svgArray[12]} />
-        <img src={svgArray[18]} id={styles.hamburger}  />
+        <img src={svgArray[18]} id={styles.hamburger} onClick={displayDiv}  />
       </section>
+      {/* Pass importedDivRef as a prop to MobileViewNav */}
+      <MobileViewNav ref={importedDivRef} />
     </div>
   );
 };
