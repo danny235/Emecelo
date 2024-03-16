@@ -4,7 +4,8 @@ import svgArray from "../../../assets/NewHomeImages/icons/svg/svg";
 import backgroundImages from "../../SharedComponents/NewTopNavigation/functions"; 
 
 const FirstSection = () => {
-  const [backgroundImage, setBackgroundImage] = useState(""); // Define backgroundImage state
+  const [backgroundImage, setBackgroundImage] = useState(""); 
+  // Define backgroundImage state
 
   useEffect(() => {
     // Function to change the background image
@@ -18,7 +19,7 @@ const FirstSection = () => {
     changeBackgroundImage();
 
     // Change background image every 3 seconds
-    const intervalId = setInterval(changeBackgroundImage, 3000);
+    const intervalId = setInterval(changeBackgroundImage, 2000);
 
     // Clean up the interval on component unmount
     return () => clearInterval(intervalId);
@@ -26,7 +27,7 @@ const FirstSection = () => {
 
   return (
     <div className={styles.main} id={styles.main} style={{ backgroundImage: `url(${backgroundImage})` }}>
-    
+
       <i className={styles.absoluteText}><marquee behavior="scroll" direction="left">. . . . . . . . .Your e-commerce mall for African indigenous products, foods and supplies</marquee></i>
       <h1>Welcome to Emcelo</h1>
       <h4>...Your Portal for Authentic African Goods</h4>

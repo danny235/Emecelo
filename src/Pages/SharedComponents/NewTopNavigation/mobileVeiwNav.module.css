@@ -21,7 +21,8 @@ background-color: rgba(0, 0, 0, 0.682);
  position:absolute;
  width: 100%;
  height: 75%;
- bottom: 0;
+ bottom: -100%;
+ transition: 3s;
  left: 0;
  display: flex;
  align-items: flex-start;
@@ -31,12 +32,55 @@ background-color: rgba(0, 0, 0, 0.682);
  padding: 20px;
  border-radius: 20px 20px 0px 0px;
  z-index: 50;
+
 }
+.slideIn{
+ animation: slideInFromBottom .3s ease-in-out forwards;
+}
+
+@keyframes slideInFromBottom {
+ from {
+   bottom:-100%;
+ }
+ to {
+   bottom: 0;
+ }
+}
+.slideOut{
+
+ animation: slideOutToBottom .3s ease-in-out forwards;
+}
+
+@keyframes slideOutToBottom {
+ from {
+   bottom:0;
+ }
+ to {
+   bottom: -100%;
+ }
+}
+.hiddenDiv figure{
+ width: 100%;
+ height: fit-content;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ margin-top: -90px;
+}
+
+.hiddenDiv figure img{
+ transform: rotate(180deg);
+}
+
  .hiddenDiv section{
  display: flex;
  flex-direction: column;
  margin-block: 20px;
  height: 30%;
+ width: 100%;
+ text-align: left;
+ align-items: flex-start;
+ justify-content: center;
 
 }
 .hiddenDiv a{
@@ -68,15 +112,3 @@ background-color: rgba(0, 0, 0, 0.682);
  color: white;
  border-radius: 15px;
 }
-
-
-
-
-
-/* @media screen and (max-width: 950px) {
-
- .main{
-  display: block;
-
- }
-} */
