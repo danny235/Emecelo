@@ -19,7 +19,7 @@ const FirstSection = () => {
     changeBackgroundImage();
 
     // Change background image every 3 seconds
-    const intervalId = setInterval(changeBackgroundImage, 3000);
+    const intervalId = setInterval(changeBackgroundImage, 2000);
 
     // Clean up the interval on component unmount
     return () => clearInterval(intervalId);

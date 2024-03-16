@@ -36,7 +36,7 @@ const NewTopNavigation = () => {
         <img src={svgArray[12]} />
       </section>
       <section className={styles.mobileView}>
-        <img src={svgArray[12]} />
+        <img src={svgArray[12]} onClick={() => navigate("/categories")} />
         <img src={svgArray[18]} id={styles.hamburger} onClick={displayDiv}  />
       </section>
       {/* Pass importedDivRef as a prop to MobileViewNav */}
